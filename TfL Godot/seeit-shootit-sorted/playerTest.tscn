@@ -302,7 +302,7 @@ position = Vector2(704, 273)
 sprite_frames = SubResource("SpriteFrames_dujqt")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.363522
+frame_progress = 0.87831
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(700, 274)
