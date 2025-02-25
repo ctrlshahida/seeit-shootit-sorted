@@ -1,6 +1,10 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "seeit-shootit-sorted", "seeit-shootit-sorted.csproj", "{A1FCC635-ABF6-4DC6-A993-CC10123CE473}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "seeit-shootit-sorted", "seeit-shootit-sorted.csproj", "{464A3369-5CA9-4CBC-A34C-C723E4C41AEB}"
+>>>>>>> 5bda9056183a8d52851a523ed7ce574a7c70dcde
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +13,20 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD
 		{A1FCC635-ABF6-4DC6-A993-CC10123CE473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A1FCC635-ABF6-4DC6-A993-CC10123CE473}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1FCC635-ABF6-4DC6-A993-CC10123CE473}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
 		{A1FCC635-ABF6-4DC6-A993-CC10123CE473}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
 		{A1FCC635-ABF6-4DC6-A993-CC10123CE473}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
 		{A1FCC635-ABF6-4DC6-A993-CC10123CE473}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+=======
+		{464A3369-5CA9-4CBC-A34C-C723E4C41AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{464A3369-5CA9-4CBC-A34C-C723E4C41AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{464A3369-5CA9-4CBC-A34C-C723E4C41AEB}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{464A3369-5CA9-4CBC-A34C-C723E4C41AEB}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{464A3369-5CA9-4CBC-A34C-C723E4C41AEB}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{464A3369-5CA9-4CBC-A34C-C723E4C41AEB}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+>>>>>>> 5bda9056183a8d52851a523ed7ce574a7c70dcde
 	EndGlobalSection
 EndGlobal
