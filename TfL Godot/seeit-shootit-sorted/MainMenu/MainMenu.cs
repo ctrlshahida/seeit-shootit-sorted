@@ -24,6 +24,9 @@ public partial class MainMenu : Control
     {
         GD.Print("Start button pressed");
         // Add code to switch scenes or start the game
+
+        var targetScene = "res://playerTest.tscn";  // Update the path to your scene
+        GetTree().ChangeSceneToFile(targetScene);
     }
 
 	private void OnExitGamePressed()
