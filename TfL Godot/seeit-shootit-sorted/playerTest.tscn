@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://mk28hom8oosm"]
+[gd_scene load_steps=41 format=4 uid="uid://bq6u41dlj13qu"]
 
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://pixelArt/Dungeon Tile Set.png" id="1_h4sir"]
 [ext_resource type="Texture2D" uid="uid://bfib3wx1vlpcw" path="res://pixelArt/Underground Roundel 2.png" id="2_syn7r"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://pixelArt/TFL_Engineer.png" id="3_u4fe8"]
 [ext_resource type="Texture2D" uid="uid://drffmebnan33v" path="res://pixelArt/Pixel Art Animated Portal/sprite-sheet.png" id="5_hfylw"]
 [ext_resource type="Script" path="res://NextLevelController.cs" id="5_sw3ub"]
+[ext_resource type="Texture2D" uid="uid://bkv3pba0hsdpf" path="res://pixelArt/healthbarUnder-4.png" id="7_dfs65"]
+[ext_resource type="Texture2D" uid="uid://btm41081r1p3l" path="res://pixelArt/healthbarProgress-4.png" id="8_qbhf1"]
+[ext_resource type="Script" path="res://TextureProgressBar.cs" id="9_7cxxb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3erx"]
 texture = ExtResource("1_h4sir")
@@ -585,5 +588,33 @@ position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_on87l")
 autoplay = "default"
 frame_progress = 0.302107
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Health Bar" type="Panel" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -84.0
+offset_bottom = 23.0
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Health Bar" node_paths=PackedStringArray("player")]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -340.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 70.0
+grow_horizontal = 0
+texture_under = ExtResource("7_dfs65")
+texture_progress = ExtResource("8_qbhf1")
+script = ExtResource("9_7cxxb")
+player = NodePath("../../../CharacterBody2D")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="NextLevel" to="NextLevel" method="_on_body_entered"]
