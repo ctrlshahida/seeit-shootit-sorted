@@ -12,6 +12,8 @@ public partial class PlayerController : CharacterBody2D
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D"); // Get the sprite node
     }
 
+    public const float AirControlFactor = 0.5f; // The factor to reduce horizontal speed while in the air
+
     public override void _PhysicsProcess(double delta)
     {
         Vector2 velocity = Velocity;
@@ -26,7 +28,7 @@ public partial class PlayerController : CharacterBody2D
         }
 
         // Handle Jump
-        if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+        if (Input.IsActionJustPressed("ui_up") && IsOnFloor())
         {
             velocity.Y = JumpVelocity;
         }
@@ -34,19 +36,24 @@ public partial class PlayerController : CharacterBody2D
         // Get input direction for movement
         Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 
-        if (!IsOnFloor()) // If the player is in the air, play jump animation
+        // Apply horizontal movement with reduced speed if in the air
+        if (direction != Vector2.Zero)
         {
-            _sprite.Play("jump");
-        }
-        else if (direction != Vector2.Zero) // If moving on the ground, play run animation
-        {
-            velocity.X = direction.X * Speed;
-            _sprite.Play("run");
+            if (IsOnFloor()) // On the ground, move at full speed
+            {
+                velocity.X = direction.X * Speed;
+                _sprite.Play("run");
+            }
+            else // In the air, reduce horizontal movement speed
+            {
+                velocity.X = direction.X * Speed * AirControlFactor;
+                _sprite.Play("jump");
+            }
 
             // Flip the sprite depending on movement direction
             _sprite.FlipH = direction.X < 0;
         }
-        else // If standing still on the ground, play idle animation
+        else if (IsOnFloor()) // If standing still on the ground, play idle animation
         {
             velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
             _sprite.Play("idle");
@@ -56,4 +63,7 @@ public partial class PlayerController : CharacterBody2D
         Velocity = velocity;
         MoveAndSlide();
     }
+
+
+
 }
