@@ -6,10 +6,22 @@ public partial class PlayerController : CharacterBody2D
     public const float Speed = 300.0f;
     public const float JumpVelocity = -400.0f;
     private AnimatedSprite2D _sprite;
+    public int CurrentHealth { get; set; }
+    public int MaxHealth { get; set; }
+    [Signal] public delegate void HealthChangedEventHandler();
 
     public override void _Ready()
     {
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D"); // Get the sprite node
+
+        MaxHealth = 100;
+        CurrentHealth = MaxHealth;
+    }
+
+    public void ChangeHealth(int amount)
+    {
+        CurrentHealth = Mathf.Clamp(CurrentHealth + amount, 0, MaxHealth);
+        EmitSignal("HealthChanged");
     }
 
     public const float AirControlFactor = 0.5f; // The factor to reduce horizontal speed while in the air
