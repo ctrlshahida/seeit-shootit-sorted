@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://bq6u41dlj13qu"]
+[gd_scene load_steps=49 format=4 uid="uid://bq6u41dlj13qu"]
 
 [ext_resource type="Script" path="res://Scenes/Level1Scene/GameManagerController.cs" id="1_ay083"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_h4sir"]
@@ -358,6 +358,15 @@ sources/0 = SubResource("TileSetAtlasSource_k73c5")
 font = ExtResource("3_b3x07")
 font_color = Color(0, 1, 1, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ir2mp"]
+font = ExtResource("3_b3x07")
+font_size = 24
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i3u8f"]
+font = ExtResource("3_b3x07")
+font_color = Color(1, 1, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tq8jg"]
 size = Vector2(97, 8.3125)
 
@@ -584,7 +593,8 @@ z_as_relative = false
 tile_map_data = PackedByteArray("AAAGABQAAAAAAAAAAAAGABUAAAAAAAEAAAAHABQAAAABAAAAAAAHABUAAAABAAEAAAAIABQAAAACAAAAAAAIABUAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_jq4fx")
 
-[node name="Label" type="Label" parent="MyMap"]
+[node name="MovementInstruction" type="Label" parent="MyMap"]
+z_index = -1
 offset_left = 158.0
 offset_top = 238.0
 offset_right = 243.0
@@ -594,6 +604,29 @@ arrow keys
 to move"
 label_settings = SubResource("LabelSettings_b1kis")
 horizontal_alignment = 1
+
+[node name="SpikesInstruction" type="Label" parent="MyMap"]
+z_index = -1
+offset_left = 456.0
+offset_top = 244.0
+offset_right = 541.0
+offset_bottom = 340.0
+text = "Avoid the spikes!"
+label_settings = SubResource("LabelSettings_ir2mp")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PlankInstructions" type="Label" parent="MyMap"]
+z_index = -1
+offset_left = 767.0
+offset_top = 169.0
+offset_right = 950.0
+offset_bottom = 218.0
+text = "Don't be scared use the planks...
+"
+label_settings = SubResource("LabelSettings_i3u8f")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="SpikeTrap" type="Node" parent="."]
 script = ExtResource("4_ifw0e")
