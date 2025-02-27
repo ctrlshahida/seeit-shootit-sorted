@@ -25,7 +25,13 @@ public override void _Ready()
         // Set minX and maxX values based on your desired movement range
         minX = -10; // Adjust as needed
         maxX =10; // Adjust as needed
+
+       // Connect the body_entered signal from the Area2D child node to the enemy_contact() method
+        // Correct signal connection syntax
+        var enemyArea = GetNode<Area2D>("EnemyArea2D");
+        enemyArea.Connect("body_entered", new Callable(this, "enemy_contact"));
     }
+
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
 public override void _PhysicsProcess(double delta)
@@ -73,5 +79,14 @@ public override void _PhysicsProcess(double delta)
         velocity.X = Mathf.Clamp(velocity.X, minX, maxX);
         Velocity = velocity;
         MoveAndSlide();
+    }
+
+    public void enemy_contact(Node2D body)
+    {
+        if(body is PlayerController)
+        {
+            PlayerController player = body as PlayerController;
+            player.TakeDamage();
+        }
     }
 }
