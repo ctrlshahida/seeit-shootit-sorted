@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://yw2gtdckhh2y"]
+
+[ext_resource type="Texture2D" uid="uid://dx18skwni8sbw" path="res://Scenes/Enemies/Zombie_free_idle.png" id="1_0h86c"]
+[ext_resource type="Script" path="res://Scripts/Enemy01.cs" id="1_krei7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbows"]
+atlas = ExtResource("1_0h86c")
+region = Rect2(48, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmxlt"]
+atlas = ExtResource("1_0h86c")
+region = Rect2(96, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb2lh"]
+atlas = ExtResource("1_0h86c")
+region = Rect2(0, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oy5ps"]
+atlas = ExtResource("1_0h86c")
+region = Rect2(144, 0, 48, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwx5c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbows")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmxlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb2lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oy5ps")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24jtt"]
+size = Vector2(22, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd214"]
+size = Vector2(24, 32)
+
+[node name="Enemy01" type="RigidBody2D"]
+script = ExtResource("1_krei7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3, -8)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_wwx5c")
+autoplay = "default"
+frame = 1
+frame_progress = 0.559092
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_24jtt")
+debug_color = Color(0.891319, 0.18251, 0.663553, 0.42)
+
+[node name="LeftRayCast" type="RayCast2D" parent="."]
+
+[node name="RightRayCast" type="RayCast2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_hd214")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
