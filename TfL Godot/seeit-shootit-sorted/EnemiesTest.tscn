@@ -1,14 +1,12 @@
-[gd_scene load_steps=22 format=4 uid="uid://bmqnrtf7r8167"]
+[gd_scene load_steps=23 format=4 uid="uid://cxga1lr06x8sy"]
 
-[ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_ywufh"]
-[ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="2_j115s"]
-[ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://Scenes/Level1Scene/TFL_Engineer.png" id="3_am0w4"]
-[ext_resource type="Texture2D" uid="uid://bkv3pba0hsdpf" path="res://Scenes/Level1Scene/healthbarUnder-4.png" id="4_s6ug1"]
-[ext_resource type="Texture2D" uid="uid://btm41081r1p3l" path="res://Scenes/Level1Scene/healthbarProgress-4.png" id="5_ofm44"]
-[ext_resource type="Script" path="res://Scripts/TextureProgressBar.cs" id="6_dqnqr"]
+[ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://pixelArt/Dungeon Tile Set.png" id="1_t72je"]
+[ext_resource type="Script" path="res://PlayerController.cs" id="2_p6v5u"]
+[ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://pixelArt/TFL_Engineer.png" id="3_xe6xt"]
+[ext_resource type="PackedScene" uid="uid://cjrr1s3ad2uwb" path="res://fare_dodger.tscn" id="5_bfe70"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a02tf"]
-texture = ExtResource("1_ywufh")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3erx"]
+texture = ExtResource("1_t72je")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
@@ -26,7 +24,6 @@ texture = ExtResource("1_ywufh")
 1:2/0 = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:2/0 = 0
@@ -152,71 +149,71 @@ texture = ExtResource("1_ywufh")
 11:15/0 = 0
 12:15/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_tpiw7"]
+[sub_resource type="TileSet" id="TileSet_edrfv"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_a02tf")
+sources/0 = SubResource("TileSetAtlasSource_n3erx")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vses0"]
-radius = 9.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y1mlm"]
+radius = 7.0
 height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iejed"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(34, 0, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ohsu2"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(0, 0, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep1m6"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(0, 224, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cy207"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(34, 0, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r4pr2"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(0, 160, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eu0s3"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(0, 192, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgwai"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(0, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_todm5"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(34, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3okmp"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(68, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rytsv"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(102, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06xnh"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(136, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nh3bl"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(170, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qalmy"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(0, 64, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6gaob"]
-atlas = ExtResource("3_am0w4")
+atlas = ExtResource("3_xe6xt")
 region = Rect2(34, 64, 34, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ju3sh"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dujqt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -286,56 +283,31 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Level2" type="Node2D"]
+[node name="Node2D" type="Node2D"]
 
-[node name="Node" type="Node" parent="."]
+[node name="MyMap" type="Node" parent="."]
 
-[node name="Foreground" type="TileMapLayer" parent="Node"]
-tile_map_data = PackedByteArray("AAAZAB4AAAACAAEAAAAaAB4AAAACAAEAAAAbAB4AAAACAAEAAAAcAB4AAAACAAEAAAAdAB4AAAACAAEAAAAeAB4AAAACAAEAAAAfAB4AAAACAAEAAAAgAB4AAAACAAEAAAAhAB4AAAACAAEAAAAiAB4AAAACAAEAAAAjAB4AAAACAAEAAAAkAB4AAAACAAEAAAAlAB4AAAACAAEAAAAmAB4AAAACAAEAAAAnAB4AAAACAAEAAAAoAB4AAAACAAEAAAApAB4AAAACAAEAAAAqAB4AAAACAAEAAAArAB4AAAACAAEAAAArAB0AAAACAAEAAAAsAB0AAAACAAEAAAAtAB0AAAACAAEAAAAuAB0AAAACAAEAAAAuABwAAAACAAEAAAAuABsAAAACAAEAAAAuABoAAAACAAEAAAAuABkAAAACAAEAAAAuABgAAAACAAEAAAAuABcAAAACAAEAAAAYAB4AAAACAAEAAAAYAB0AAAACAAEAAAAXAB0AAAACAAEAAAAXABwAAAACAAEAAAAWABsAAAACAAEAAAAWABoAAAACAAEAAAAWABkAAAACAAEAAAAVABkAAAACAAEAAAAVABgAAAACAAEAAAAVABcAAAACAAEAAAAUABYAAAACAAEAAAAUABUAAAACAAEAAAA=")
-tile_set = SubResource("TileSet_tpiw7")
+[node name="TileMapLayer" type="TileMapLayer" parent="MyMap"]
+tile_map_data = PackedByteArray("AAAXABQAAAABAAEAAAAYABQAAAABAAEAAAAZABQAAAABAAEAAAAaABQAAAABAAEAAAAbABQAAAABAAEAAAAbABMAAAABAAEAAAAcABMAAAABAAEAAAAdABMAAAABAAEAAAAeABMAAAABAAEAAAAfABMAAAABAAEAAAAgABMAAAABAAEAAAAhABMAAAABAAEAAAAiABMAAAABAAEAAAAjABMAAAABAAEAAAAkABMAAAABAAEAAAAlABMAAAABAAEAAAAmABMAAAABAAEAAAAnABIAAAABAAEAAAAoABIAAAABAAEAAAApABIAAAABAAEAAAAqABIAAAABAAEAAAArABIAAAABAAEAAAAsABIAAAABAAEAAAAtABIAAAABAAEAAAAuABIAAAABAAEAAAAvABIAAAABAAEAAAAvABEAAAABAAEAAAAwABEAAAABAAEAAAAxABEAAAABAAEAAAAyABEAAAABAAEAAAAzABEAAAABAAEAAAA0ABEAAAABAAEAAAA1ABEAAAABAAEAAAA2ABEAAAABAAEAAAA2ABIAAAABAAEAAAA2ABMAAAABAAEAAAA2ABQAAAABAAEAAAA2ABUAAAABAAEAAAA2ABYAAAABAAEAAAA2ABcAAAABAAEAAAA3ABcAAAABAAEAAAA4ABcAAAABAAEAAAA5ABcAAAABAAEAAAA6ABcAAAABAAEAAAA7ABcAAAABAAEAAAA7ABYAAAABAAEAAAA8ABYAAAABAAEAAAA9ABYAAAABAAEAAAA9ABUAAAABAAEAAAA+ABUAAAABAAEAAAA+ABQAAAABAAEAAAA/ABQAAAABAAEAAABAABQAAAABAAEAAABAABMAAAABAAEAAABBABMAAAABAAEAAABBABIAAAABAAEAAABCABIAAAABAAEAAABDABIAAAABAAEAAABDABEAAAABAAEAAAAXABUAAAABAAEAAAAXABYAAAABAAEAAAAXABcAAAABAAEAAAAWABcAAAABAAEAAAAVABcAAAABAAEAAAAUABcAAAABAAEAAAAUABgAAAABAAEAAAATABgAAAABAAEAAAASABgAAAABAAEAAAARABgAAAABAAEAAAAQABgAAAABAAEAAAAPABgAAAABAAEAAAAOABgAAAABAAEAAAANABgAAAABAAEAAAAMABgAAAABAAEAAAALABgAAAABAAEAAAAKABgAAAABAAEAAAAJABgAAAABAAEAAAAIABgAAAABAAEAAAAHABgAAAABAAEAAAAGABgAAAABAAEAAAAFABgAAAABAAEAAAAEABgAAAABAAEAAAADABgAAAABAAEAAAADABcAAAABAAEAAAADABYAAAABAAEAAAADABUAAAABAAEAAAADABQAAAABAAEAAAADABMAAAABAAEAAAADABIAAAABAAEAAAADABEAAAABAAEAAAADABAAAAABAAEAAAADAA8AAAABAAEAAAADAA4AAAABAAEAAAADAA0AAAABAAEAAAADAAwAAAABAAEAAAADAAsAAAABAAEAAABEABEAAAABAAEAAABFABEAAAABAAEAAABGABEAAAABAAEAAABHABEAAAABAAEAAABIABEAAAABAAEAAABJABEAAAABAAEAAABKABEAAAABAAEAAABLABEAAAABAAEAAABMABEAAAABAAEAAABNABEAAAABAAEAAABNABAAAAABAAEAAABNAA8AAAABAAEAAABOAA4AAAABAAEAAABOAA0AAAABAAEAAABOAAwAAAABAAEAAABOAAsAAAABAAEAAABOAAoAAAABAAEAAABOAAkAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_edrfv")
+
+[node name="FareDodger" parent="." instance=ExtResource("5_bfe70")]
+position = Vector2(853, 258)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(405, 292)
-script = ExtResource("2_j115s")
+script = ExtResource("2_p6v5u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1, 20)
-shape = SubResource("CapsuleShape2D_vses0")
+position = Vector2(700, 275)
+shape = SubResource("CapsuleShape2D_y1mlm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(2, 16)
-sprite_frames = SubResource("SpriteFrames_ju3sh")
-animation = &"shoot"
+position = Vector2(704, 273)
+sprite_frames = SubResource("SpriteFrames_dujqt")
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.602214
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(101, 17)
+position = Vector2(700, 274)
 zoom = Vector2(4, 4)
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Health Bar" type="Panel" parent="UI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -84.0
-offset_bottom = 23.0
-grow_horizontal = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Health Bar" node_paths=PackedStringArray("player")]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -340.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = 70.0
-grow_horizontal = 0
-texture_under = ExtResource("4_s6ug1")
-texture_progress = ExtResource("5_ofm44")
-script = ExtResource("6_dqnqr")
-player = NodePath("../../../CharacterBody2D")
-metadata/_edit_use_anchors_ = true
