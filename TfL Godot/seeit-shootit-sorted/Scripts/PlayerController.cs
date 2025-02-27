@@ -9,6 +9,7 @@ public partial class PlayerController : CharacterBody2D
     public int CurrentHealth { get; set; }
     public int MaxHealth { get; set; }
     [Signal] public delegate void HealthChangedEventHandler();
+    [Signal] public delegate void DeathEventHandler();
 
     public override void _Ready()
     {
@@ -32,6 +33,29 @@ public partial class PlayerController : CharacterBody2D
     {
         CurrentHealth = Mathf.Clamp(CurrentHealth + amount, 0, MaxHealth);
         EmitSignal("HealthChanged");
+
+        if(CurrentHealth <= 0){
+            CurrentHealth = 0;
+            _sprite.Play("death");
+            GD.Print("Player has died");
+            _sprite.AnimationFinished += _on_animated_sprite_2d_animation_finished;
+            SetPhysicsProcess(false); // Stop player movement
+            SetProcess(false);
+            // EmitSignal(nameof(Death));
+        }
+    }
+
+    private void _on_animated_sprite_2d_animation_finished()
+    {
+        if (_sprite.Animation == "death") // Ensure we're checking the correct animation
+        {
+            GD.Print("Respawning player after death animation");
+
+            // Disconnect the signal to prevent multiple calls
+            _sprite.AnimationFinished -= _on_animated_sprite_2d_animation_finished;
+
+            EmitSignal(nameof(Death));
+        }
     }
 
     public const float AirControlFactor = 0.5f; // The factor to reduce horizontal speed while in the air
@@ -80,12 +104,22 @@ public partial class PlayerController : CharacterBody2D
             velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
             _sprite.Play("idle");
         }
-
         // Assign and move
         Velocity = velocity;
         MoveAndSlide();
     }
 
+    public void TakeDamage(){
+        GD.Print("Player has taken damage");
+    }
 
+    public void RespawnPlayer(){
+        GD.Print("Player respawned");
+        CurrentHealth = MaxHealth;
+        EmitSignal("HealthChanged");
 
+        //_sprite.Play("idle");
+        SetPhysicsProcess(true);
+        SetProcess(true);
+    }
 }
