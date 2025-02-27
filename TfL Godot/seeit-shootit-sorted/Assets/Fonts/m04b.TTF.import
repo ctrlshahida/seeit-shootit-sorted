@@ -2,22 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://qt6lmjb478u6"
-<<<<<<<< HEAD:TfL Godot/seeit-shootit-sorted/Assets/Fonts/m04b.TTF.import
+uid="uid://dexeh0ghax0t1"
 path="res://.godot/imported/m04b.TTF-4ea3b476ce71fc3cada8413a0ab46b93.fontdata"
 
 [deps]
 
 source_file="res://Assets/Fonts/m04b.TTF"
 dest_files=["res://.godot/imported/m04b.TTF-4ea3b476ce71fc3cada8413a0ab46b93.fontdata"]
-========
-path="res://.godot/imported/m04b.TTF-41ab8c228083e79ef7ab6e5a534531f9.fontdata"
-
-[deps]
-
-source_file="res://Scenes/Game_over_menu/m04b.TTF"
-dest_files=["res://.godot/imported/m04b.TTF-41ab8c228083e79ef7ab6e5a534531f9.fontdata"]
->>>>>>>> 1e7b9f2 (Change file Directory):TfL Godot/seeit-shootit-sorted/Scenes/Game_over_menu/m04b.TTF.import
 
 [params]
 

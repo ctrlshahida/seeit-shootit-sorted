@@ -2,25 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj7ioyt6k5rb5"
-<<<<<<<< HEAD:TfL Godot/seeit-shootit-sorted/Scenes/GameOverMenu/background gameover.png.import
-path="res://.godot/imported/background gameover.png-9f44809df4971ff72b6d5108944fa69e.ctex"
-========
+uid="uid://n5a5hlgwdqnf"
 path="res://.godot/imported/background gameover.png-2b2d82b186da7fd8e5670321d2b839b3.ctex"
->>>>>>>> 1e7b9f2 (Change file Directory):TfL Godot/seeit-shootit-sorted/Scenes/Game_over_menu/background gameover.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:TfL Godot/seeit-shootit-sorted/Scenes/GameOverMenu/background gameover.png.import
-source_file="res://Scenes/GameOverMenu/background gameover.png"
-dest_files=["res://.godot/imported/background gameover.png-9f44809df4971ff72b6d5108944fa69e.ctex"]
-========
 source_file="res://Scenes/Game_over_menu/background gameover.png"
 dest_files=["res://.godot/imported/background gameover.png-2b2d82b186da7fd8e5670321d2b839b3.ctex"]
->>>>>>>> 1e7b9f2 (Change file Directory):TfL Godot/seeit-shootit-sorted/Scenes/Game_over_menu/background gameover.png.import
 
 [params]
 

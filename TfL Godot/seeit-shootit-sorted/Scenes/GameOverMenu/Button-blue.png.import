@@ -2,25 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6dia7trahjl3"
-<<<<<<<< HEAD:TfL Godot/seeit-shootit-sorted/Scenes/GameOverMenu/Button-blue.png.import
+uid="uid://ds7261wwtx3sq"
 path="res://.godot/imported/Button-blue.png-bbcd1441e07ca1ebe04f783e181f0ae3.ctex"
-========
-path="res://.godot/imported/Button-blue.png-03d622050ec338d5fa6f038c650978a1.ctex"
->>>>>>>> 1e7b9f2 (Change file Directory):TfL Godot/seeit-shootit-sorted/Scenes/Game_over_menu/Button-blue.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:TfL Godot/seeit-shootit-sorted/Scenes/GameOverMenu/Button-blue.png.import
 source_file="res://Scenes/GameOverMenu/Button-blue.png"
 dest_files=["res://.godot/imported/Button-blue.png-bbcd1441e07ca1ebe04f783e181f0ae3.ctex"]
-========
-source_file="res://Scenes/Game_over_menu/Button-blue.png"
-dest_files=["res://.godot/imported/Button-blue.png-03d622050ec338d5fa6f038c650978a1.ctex"]
->>>>>>>> 1e7b9f2 (Change file Directory):TfL Godot/seeit-shootit-sorted/Scenes/Game_over_menu/Button-blue.png.import
 
 [params]
 
