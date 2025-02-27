@@ -26,7 +26,7 @@ public partial class NextLevelController : Area2D
         // Check if the player entered
         if (body is PlayerController)
         {
-            GetTree().ChangeSceneToFile("res://level2Scene.tscn"); // Change to the correct scene path
+            GetTree().ChangeSceneToFile("/Users/batikanozdemir/Projects/SeeItShootItSortedProject/seeit-shootit-sorted/TfL Godot/seeit-shootit-sorted/Scenes/level2Scene.tscn"); // Change to the correct scene path
         }
     }
 }

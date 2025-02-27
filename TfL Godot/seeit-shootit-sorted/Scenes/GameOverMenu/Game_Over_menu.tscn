@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://baowa8235jrkf"]
 
-[ext_resource type="Texture2D" uid="uid://cj7ioyt6k5rb5" path="res://Game_over_menu/background gameover.png" id="1_hhl8a"]
-[ext_resource type="FontFile" uid="uid://b3lnyk8e2oy2p" path="res://Game_over_menu/I-pixel-u.ttf" id="1_n8yem"]
-[ext_resource type="Texture2D" uid="uid://6dia7trahjl3" path="res://Game_over_menu/Button-blue.png" id="2_es80i"]
-[ext_resource type="FontFile" uid="uid://dppfuaum44qb6" path="res://Game_over_menu/m04.TTF" id="4_e0hn6"]
-[ext_resource type="FontFile" uid="uid://qt6lmjb478u6" path="res://Game_over_menu/m04b.TTF" id="5_yxtq2"]
+[ext_resource type="Texture2D" uid="uid://cj7ioyt6k5rb5" path="res://Scenes/GameOverMenu/background gameover.png" id="1_hhl8a"]
+[ext_resource type="FontFile" uid="uid://b3lnyk8e2oy2p" path="res://Assets/Fonts/I-pixel-u.ttf" id="1_n8yem"]
+[ext_resource type="Texture2D" uid="uid://6dia7trahjl3" path="res://Scenes/GameOverMenu/Button-blue.png" id="2_es80i"]
+[ext_resource type="FontFile" uid="uid://dppfuaum44qb6" path="res://Assets/Fonts/m04.TTF" id="4_e0hn6"]
+[ext_resource type="FontFile" uid="uid://qt6lmjb478u6" path="res://Assets/Fonts/m04b.TTF" id="5_yxtq2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xf5a"]
 texture = ExtResource("1_hhl8a")
