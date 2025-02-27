@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://bq6u41dlj13qu"]
+[gd_scene load_steps=47 format=4 uid="uid://bq6u41dlj13qu"]
 
 [ext_resource type="Script" path="res://Scenes/Level1Scene/GameManagerController.cs" id="1_ay083"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_h4sir"]
@@ -377,6 +377,10 @@ region = Rect2(0, 0, 34, 32)
 atlas = ExtResource("3_u4fe8")
 region = Rect2(0, 224, 34, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iekj"]
+atlas = ExtResource("3_u4fe8")
+region = Rect2(0, 224, 34, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cy207"]
 atlas = ExtResource("3_u4fe8")
 region = Rect2(34, 0, 34, 32)
@@ -432,6 +436,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ep1m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iekj")
 }],
 "loop": false,
 "name": &"death",
