@@ -1,6 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://b2y3x63ckq5gx"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_3creq"]
+=======
+[ext_resource type="Script" path="res://PlayerController.cs" id="1_3creq"]
+>>>>>>> 1e7b9f2 (Change file Directory)
 [ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://Scenes/Level1Scene/TFL_Engineer.png" id="2_ngqo8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sgvvw"]

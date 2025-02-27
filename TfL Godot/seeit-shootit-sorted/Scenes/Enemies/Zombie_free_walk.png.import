@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx18skwni8sbw"
-path="res://.godot/imported/Zombie_free_idle.png-b1d66ec2bae4337d35b5d63fa3a6f33e.ctex"
+uid="uid://d17y73eolpra"
+path="res://.godot/imported/Zombie_free_walk.png-61434f173eaf2c4b50d4884e6aef7245.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Zombie_free_idle.png"
-dest_files=["res://.godot/imported/Zombie_free_idle.png-b1d66ec2bae4337d35b5d63fa3a6f33e.ctex"]
+source_file="res://Scenes/Enemies/Zombie_free_walk.png"
+dest_files=["res://.godot/imported/Zombie_free_walk.png-61434f173eaf2c4b50d4884e6aef7245.ctex"]
 
 [params]
 

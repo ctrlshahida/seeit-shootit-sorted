@@ -1,12 +1,12 @@
 [gd_scene load_steps=23 format=4 uid="uid://cxga1lr06x8sy"]
 
-[ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://pixelArt/Dungeon Tile Set.png" id="1_t72je"]
-[ext_resource type="Script" path="res://PlayerController.cs" id="2_p6v5u"]
-[ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://pixelArt/TFL_Engineer.png" id="3_xe6xt"]
-[ext_resource type="PackedScene" uid="uid://cjrr1s3ad2uwb" path="res://fare_dodger.tscn" id="5_bfe70"]
+[ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_8e4o2"]
+[ext_resource type="PackedScene" uid="uid://cjrr1s3ad2uwb" path="res://Scenes/Enemies/fare_dodger.tscn" id="2_bghmw"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="3_07ewh"]
+[ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://Scenes/Level1Scene/TFL_Engineer.png" id="4_2iy6y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3erx"]
-texture = ExtResource("1_t72je")
+texture = ExtResource("1_8e4o2")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
@@ -158,59 +158,59 @@ radius = 7.0
 height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iejed"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(34, 0, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ohsu2"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(0, 0, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep1m6"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(0, 224, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cy207"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(34, 0, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r4pr2"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(0, 160, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eu0s3"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(0, 192, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgwai"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(0, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_todm5"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(34, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3okmp"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(68, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rytsv"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(102, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06xnh"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(136, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nh3bl"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(170, 32, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qalmy"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(0, 64, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6gaob"]
-atlas = ExtResource("3_xe6xt")
+atlas = ExtResource("4_2iy6y")
 region = Rect2(34, 64, 34, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dujqt"]
@@ -291,11 +291,11 @@ animations = [{
 tile_map_data = PackedByteArray("AAAXABQAAAABAAEAAAAYABQAAAABAAEAAAAZABQAAAABAAEAAAAaABQAAAABAAEAAAAbABQAAAABAAEAAAAbABMAAAABAAEAAAAcABMAAAABAAEAAAAdABMAAAABAAEAAAAeABMAAAABAAEAAAAfABMAAAABAAEAAAAgABMAAAABAAEAAAAhABMAAAABAAEAAAAiABMAAAABAAEAAAAjABMAAAABAAEAAAAkABMAAAABAAEAAAAlABMAAAABAAEAAAAmABMAAAABAAEAAAAnABIAAAABAAEAAAAoABIAAAABAAEAAAApABIAAAABAAEAAAAqABIAAAABAAEAAAArABIAAAABAAEAAAAsABIAAAABAAEAAAAtABIAAAABAAEAAAAuABIAAAABAAEAAAAvABIAAAABAAEAAAAvABEAAAABAAEAAAAwABEAAAABAAEAAAAxABEAAAABAAEAAAAyABEAAAABAAEAAAAzABEAAAABAAEAAAA0ABEAAAABAAEAAAA1ABEAAAABAAEAAAA2ABEAAAABAAEAAAA2ABIAAAABAAEAAAA2ABMAAAABAAEAAAA2ABQAAAABAAEAAAA2ABUAAAABAAEAAAA2ABYAAAABAAEAAAA2ABcAAAABAAEAAAA3ABcAAAABAAEAAAA4ABcAAAABAAEAAAA5ABcAAAABAAEAAAA6ABcAAAABAAEAAAA7ABcAAAABAAEAAAA7ABYAAAABAAEAAAA8ABYAAAABAAEAAAA9ABYAAAABAAEAAAA9ABUAAAABAAEAAAA+ABUAAAABAAEAAAA+ABQAAAABAAEAAAA/ABQAAAABAAEAAABAABQAAAABAAEAAABAABMAAAABAAEAAABBABMAAAABAAEAAABBABIAAAABAAEAAABCABIAAAABAAEAAABDABIAAAABAAEAAABDABEAAAABAAEAAAAXABUAAAABAAEAAAAXABYAAAABAAEAAAAXABcAAAABAAEAAAAWABcAAAABAAEAAAAVABcAAAABAAEAAAAUABcAAAABAAEAAAAUABgAAAABAAEAAAATABgAAAABAAEAAAASABgAAAABAAEAAAARABgAAAABAAEAAAAQABgAAAABAAEAAAAPABgAAAABAAEAAAAOABgAAAABAAEAAAANABgAAAABAAEAAAAMABgAAAABAAEAAAALABgAAAABAAEAAAAKABgAAAABAAEAAAAJABgAAAABAAEAAAAIABgAAAABAAEAAAAHABgAAAABAAEAAAAGABgAAAABAAEAAAAFABgAAAABAAEAAAAEABgAAAABAAEAAAADABgAAAABAAEAAAADABcAAAABAAEAAAADABYAAAABAAEAAAADABUAAAABAAEAAAADABQAAAABAAEAAAADABMAAAABAAEAAAADABIAAAABAAEAAAADABEAAAABAAEAAAADABAAAAABAAEAAAADAA8AAAABAAEAAAADAA4AAAABAAEAAAADAA0AAAABAAEAAAADAAwAAAABAAEAAAADAAsAAAABAAEAAABEABEAAAABAAEAAABFABEAAAABAAEAAABGABEAAAABAAEAAABHABEAAAABAAEAAABIABEAAAABAAEAAABJABEAAAABAAEAAABKABEAAAABAAEAAABLABEAAAABAAEAAABMABEAAAABAAEAAABNABEAAAABAAEAAABNABAAAAABAAEAAABNAA8AAAABAAEAAABOAA4AAAABAAEAAABOAA0AAAABAAEAAABOAAwAAAABAAEAAABOAAsAAAABAAEAAABOAAoAAAABAAEAAABOAAkAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_edrfv")
 
-[node name="FareDodger" parent="." instance=ExtResource("5_bfe70")]
+[node name="FareDodger" parent="." instance=ExtResource("2_bghmw")]
 position = Vector2(853, 258)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("2_p6v5u")
+script = ExtResource("3_07ewh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(700, 275)

@@ -1,8 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://caiwnfd4rjors"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="1_eic4d"]
 [ext_resource type="Texture2D" uid="uid://dgr4t13drk8nf" path="res://Scenes/MainMenu/Stratford station-2-2.png" id="1_ghgij"]
 [ext_resource type="FontFile" uid="uid://b3lnyk8e2oy2p" path="res://Assets/Fonts/I-pixel-u.ttf" id="1_qy5yi"]
+=======
+[ext_resource type="Texture2D" uid="uid://dgr4t13drk8nf" path="res://Scenes/MainMenu/Stratford station-2-2.png" id="1_ghgij"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.cs" id="1_kvkfy"]
+[ext_resource type="FontFile" uid="uid://beox8qxfo1eeb" path="res://Assets/Fonts/I-pixel-u.ttf" id="1_qy5yi"]
+>>>>>>> 1e7b9f2 (Change file Directory)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2q8mj"]
 texture = ExtResource("1_ghgij")

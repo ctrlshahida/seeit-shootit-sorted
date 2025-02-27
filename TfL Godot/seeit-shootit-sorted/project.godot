@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="seeit-shootit-sorted"
+<<<<<<< HEAD
 run/main_scene="res://Game_over_menu/Game_Over_menu.tscn"
 run/main_scene="res://Scenes/MainMenu/MainMenu.tscn"
+=======
+run/main_scene="res://Scenes/Game_over_menu/Game_Over_menu.tscn"
+>>>>>>> 1e7b9f2 (Change file Directory)
 config/features=PackedStringArray("4.3", "C#", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
 
 [dotnet]
 

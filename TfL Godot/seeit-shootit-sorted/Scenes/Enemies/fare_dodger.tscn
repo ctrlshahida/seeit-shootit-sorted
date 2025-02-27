@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjrr1s3ad2uwb"]
+[gd_scene load_steps=8 format=3 uid="uid://cjrr1s3ad2uwb"]
 
-[ext_resource type="Texture2D" uid="uid://d17y73eolpra" path="res://Enemies/Zombie_free_walk.png" id="1_gpg1j"]
-[ext_resource type="Script" path="res://FareDodger.cs" id="1_wbhnq"]
+[ext_resource type="Texture2D" uid="uid://d17y73eolpra" path="res://Scenes/Enemies/Zombie_free_walk.png" id="1_gpg1j"]
+[ext_resource type="Script" path="res://Scripts/FareDodger.cs" id="1_wbhnq"]
 
 [sub_resource type="Animation" id="Animation_pcta0"]
 resource_name = "Move"
@@ -20,6 +20,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 7]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyArea2D/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.1875, 0.285729),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3.5, -1), Vector2(3.5, -1), Vector2(3.5, -0.5), Vector2(3.5, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_2d4pe"]
 length = 0.001
@@ -35,6 +47,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyArea2D/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.5, -2)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2wxr"]
 _data = {
@@ -44,6 +68,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ce0m"]
 size = Vector2(28, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wdaj"]
+size = Vector2(27, 30)
 
 [node name="FareDodger" type="CharacterBody2D"]
 script = ExtResource("1_wbhnq")
@@ -68,3 +95,12 @@ target_position = Vector2(0, 30)
 [node name="RightRaycast" type="RayCast2D" parent="."]
 position = Vector2(14, 0)
 target_position = Vector2(0, 30)
+
+[node name="EnemyArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea2D"]
+position = Vector2(3.5, -2)
+shape = SubResource("RectangleShape2D_0wdaj")
+debug_color = Color(0.8809, 0.125195, 0.762051, 0.42)
+
+[connection signal="body_entered" from="EnemyArea2D" to="." method="enemy_contact"]

@@ -6,14 +6,18 @@ public partial class PlayerController : CharacterBody2D
     public const float Speed = 300.0f;
     public const float JumpVelocity = -400.0f;
     private AnimatedSprite2D _sprite;
+<<<<<<< HEAD
     public int CurrentHealth { get; set; }
     public int MaxHealth { get; set; }
     [Signal] public delegate void HealthChangedEventHandler();
     [Signal] public delegate void DeathEventHandler();
+=======
+>>>>>>> 1e7b9f2 (Change file Directory)
 
     public override void _Ready()
     {
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D"); // Get the sprite node
+<<<<<<< HEAD
 
         MaxHealth = 100;
         CurrentHealth = MaxHealth;
@@ -60,6 +64,10 @@ public partial class PlayerController : CharacterBody2D
 
     public const float AirControlFactor = 0.5f; // The factor to reduce horizontal speed while in the air
 
+=======
+    }
+
+>>>>>>> 1e7b9f2 (Change file Directory)
     public override void _PhysicsProcess(double delta)
     {
         Vector2 velocity = Velocity;
@@ -74,7 +82,11 @@ public partial class PlayerController : CharacterBody2D
         }
 
         // Handle Jump
+<<<<<<< HEAD
         if (Input.IsActionJustPressed("ui_up") && IsOnFloor())
+=======
+        if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+>>>>>>> 1e7b9f2 (Change file Directory)
         {
             velocity.Y = JumpVelocity;
         }
@@ -82,6 +94,7 @@ public partial class PlayerController : CharacterBody2D
         // Get input direction for movement
         Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 
+<<<<<<< HEAD
         // Apply horizontal movement with reduced speed if in the air
         if (direction != Vector2.Zero)
         {
@@ -95,19 +108,38 @@ public partial class PlayerController : CharacterBody2D
                 velocity.X = direction.X * Speed * AirControlFactor;
                 _sprite.Play("jump");
             }
+=======
+        if (!IsOnFloor()) // If the player is in the air, play jump animation
+        {
+            _sprite.Play("jump");
+        }
+        else if (direction != Vector2.Zero) // If moving on the ground, play run animation
+        {
+            velocity.X = direction.X * Speed;
+            _sprite.Play("run");
+>>>>>>> 1e7b9f2 (Change file Directory)
 
             // Flip the sprite depending on movement direction
             _sprite.FlipH = direction.X < 0;
         }
+<<<<<<< HEAD
         else if (IsOnFloor()) // If standing still on the ground, play idle animation
+=======
+        else // If standing still on the ground, play idle animation
+>>>>>>> 1e7b9f2 (Change file Directory)
         {
             velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
             _sprite.Play("idle");
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1e7b9f2 (Change file Directory)
         // Assign and move
         Velocity = velocity;
         MoveAndSlide();
     }
+<<<<<<< HEAD
 
     public void TakeDamage(){
         GD.Print("Player has taken damage");
@@ -122,4 +154,6 @@ public partial class PlayerController : CharacterBody2D
         SetPhysicsProcess(true);
         SetProcess(true);
     }
+=======
+>>>>>>> 1e7b9f2 (Change file Directory)
 }

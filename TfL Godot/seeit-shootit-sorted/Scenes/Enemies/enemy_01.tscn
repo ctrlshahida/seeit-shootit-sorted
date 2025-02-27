@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://yw2gtdckhh2y"]
 
-[ext_resource type="Texture2D" uid="uid://dx18skwni8sbw" path="res://Enemies/Zombie_free_idle.png" id="1_0h86c"]
-[ext_resource type="Script" path="res://Enemy01.cs" id="1_krei7"]
+[ext_resource type="Texture2D" uid="uid://dx18skwni8sbw" path="res://Scenes/Enemies/Zombie_free_idle.png" id="1_0h86c"]
+[ext_resource type="Script" path="res://Scripts/Enemy01.cs" id="1_krei7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbows"]
 atlas = ExtResource("1_0h86c")

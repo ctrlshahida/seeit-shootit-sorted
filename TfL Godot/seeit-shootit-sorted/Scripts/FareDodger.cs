@@ -81,12 +81,12 @@ public override void _PhysicsProcess(double delta)
         MoveAndSlide();
     }
 
-    public void enemy_contact(Node2D body)
-    {
-        if(body is PlayerController)
-        {
-            PlayerController player = body as PlayerController;
-            player.TakeDamage();
-        }
-    }
+    // public void enemy_contact(Node2D body)
+    // {
+    //     if(body is PlayerController)
+    //     {
+    //         PlayerController player = body as PlayerController;
+    //         player.TakeDamage();
+    //     }
+    // }
 }

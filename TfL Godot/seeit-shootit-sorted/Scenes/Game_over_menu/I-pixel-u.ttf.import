@@ -2,19 +2,14 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-<<<<<<< HEAD
 uid="uid://b3lnyk8e2oy2p"
 <<<<<<<< HEAD:TfL Godot/seeit-shootit-sorted/Assets/Fonts/I-pixel-u.ttf.import
-=======
-uid="uid://beox8qxfo1eeb"
->>>>>>> 1e7b9f2 (Change file Directory)
 path="res://.godot/imported/I-pixel-u.ttf-6e1b29e1c594d91076892b2a5ba6535c.fontdata"
 
 [deps]
 
 source_file="res://Assets/Fonts/I-pixel-u.ttf"
 dest_files=["res://.godot/imported/I-pixel-u.ttf-6e1b29e1c594d91076892b2a5ba6535c.fontdata"]
-<<<<<<< HEAD
 ========
 path="res://.godot/imported/I-pixel-u.ttf-63845b6a9c089d157e126e0cd8da3c6e.fontdata"
 
@@ -23,8 +18,6 @@ path="res://.godot/imported/I-pixel-u.ttf-63845b6a9c089d157e126e0cd8da3c6e.fontd
 source_file="res://Scenes/Game_over_menu/I-pixel-u.ttf"
 dest_files=["res://.godot/imported/I-pixel-u.ttf-63845b6a9c089d157e126e0cd8da3c6e.fontdata"]
 >>>>>>>> 1e7b9f2 (Change file Directory):TfL Godot/seeit-shootit-sorted/Scenes/Game_over_menu/I-pixel-u.ttf.import
-=======
->>>>>>> 1e7b9f2 (Change file Directory)
 
 [params]
 
