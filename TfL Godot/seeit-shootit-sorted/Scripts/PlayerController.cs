@@ -14,7 +14,7 @@ public partial class PlayerController : CharacterBody2D
     public override void _Ready()
     {
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D"); // Get the sprite node
-
+        _sprite.AnimationFinished += _on_animated_sprite_2d_animation_finished;
         MaxHealth = 100;
         CurrentHealth = MaxHealth;
     }

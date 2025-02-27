@@ -5,7 +5,6 @@ public partial class NextLevelController : Area2D
 {
     public override void _Ready()
     {
-        // Manually connect the signal in case it wasn't auto-generated
         BodyEntered += OnBodyEntered;
     }
 
@@ -23,10 +22,9 @@ public partial class NextLevelController : Area2D
     {
         GD.Print("Player entered portal: " + body.Name);
 
-        // Check if the player entered
         if (body is PlayerController)
         {
-            GetTree().ChangeSceneToFile("/Users/batikanozdemir/Projects/SeeItShootItSortedProject/seeit-shootit-sorted/TfL Godot/seeit-shootit-sorted/Scenes/level2Scene.tscn"); // Change to the correct scene path
+            GetTree().ChangeSceneToFile("res://Scenes/level2Scene.tscn");
         }
     }
 }
