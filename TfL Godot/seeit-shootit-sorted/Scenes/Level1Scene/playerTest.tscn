@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://bq6u41dlj13qu"]
+[gd_scene load_steps=46 format=4 uid="uid://bq6u41dlj13qu"]
 
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_h4sir"]
 [ext_resource type="Texture2D" uid="uid://bfib3wx1vlpcw" path="res://Scenes/Level1Scene/Underground Roundel 2.png" id="2_syn7r"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bkv3pba0hsdpf" path="res://Scenes/Level1Scene/healthbarUnder-4.png" id="7_dfs65"]
 [ext_resource type="Texture2D" uid="uid://btm41081r1p3l" path="res://Scenes/Level1Scene/healthbarProgress-4.png" id="8_qbhf1"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.cs" id="9_7cxxb"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="10_8sb5m"]
+[ext_resource type="FontFile" uid="uid://b3lnyk8e2oy2p" path="res://Assets/Fonts/I-pixel-u.ttf" id="11_gavgv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3erx"]
 texture = ExtResource("1_h4sir")
@@ -540,6 +542,99 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkqw6"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+bg_color = Color(0.767685, 0.790104, 0.923885, 1)
+draw_center = true
+skew = Vector2(0, 0)
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color(0.8, 0.8, 0.8, 1)
+border_blend = false
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_top = 0.0
+expand_margin_right = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(0, 2.5)
+anti_aliasing = true
+anti_aliasing_size = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t71t"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+bg_color = Color(0.601168, 0.632799, 0.853332, 1)
+draw_center = true
+skew = Vector2(0, 0)
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color(0.8, 0.8, 0.8, 1)
+border_blend = false
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_top = 0.0
+expand_margin_right = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(0, 2.5)
+anti_aliasing = true
+anti_aliasing_size = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdv55"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+bg_color = Color(0.809198, 0.828183, 0.93846, 1)
+draw_center = true
+skew = Vector2(0, 0)
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color(0.8, 0.8, 0.8, 1)
+border_blend = false
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_top = 0.0
+expand_margin_right = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(0, 2.5)
+anti_aliasing = true
+anti_aliasing_size = 1.0
+
 [node name="Level1" type="Node2D"]
 position = Vector2(-18, -72)
 
@@ -617,4 +712,156 @@ script = ExtResource("9_7cxxb")
 player = NodePath("../../../CharacterBody2D")
 metadata/_edit_use_anchors_ = true
 
+[node name="PauseMenu" type="Node" parent="UI"]
+script = ExtResource("10_8sb5m")
+
+[node name="PausePanel" type="Panel" parent="UI/PauseMenu"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game Paused" type="Label" parent="UI/PauseMenu/PausePanel"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -255.0
+offset_right = 320.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
+mouse_filter = 2
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("11_gavgv")
+theme_override_font_sizes/font_size = 80
+text = "GAME
+PAUSED"
+label_settings = null
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 0
+justification_flags = 163
+clip_text = false
+text_overrun_behavior = 0
+ellipsis_char = "…"
+uppercase = false
+tab_stops = PackedFloat32Array()
+lines_skipped = 0
+max_lines_visible = -1
+visible_characters = -1
+visible_characters_behavior = 0
+visible_ratio = 1.0
+text_direction = 0
+language = ""
+structured_text_bidi_override = 0
+structured_text_bidi_override_options = []
+script = null
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseMenu/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = 35.0
+offset_right = 127.0
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Resume" type="Button" parent="UI/PauseMenu/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.129412, 0.14902, 0.180392, 1)
+theme_override_fonts/font = ExtResource("11_gavgv")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_dkqw6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3t71t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hdv55")
+text = "RESUME"
+
+[node name="Main Menu" type="Button" parent="UI/PauseMenu/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.129412, 0.14902, 0.180392, 1)
+theme_override_fonts/font = ExtResource("11_gavgv")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_dkqw6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3t71t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hdv55")
+text = "MAIN MENU"
+
 [connection signal="body_entered" from="NextLevel" to="NextLevel" method="_on_body_entered"]
+[connection signal="pressed" from="UI/PauseMenu/PausePanel/VBoxContainer/Resume" to="UI/PauseMenu" method="OnResumePressed"]
+[connection signal="pressed" from="UI/PauseMenu/PausePanel/VBoxContainer/Main Menu" to="UI/PauseMenu" method="OnMainMenuPressed"]
