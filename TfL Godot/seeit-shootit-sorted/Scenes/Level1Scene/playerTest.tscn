@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://bq6u41dlj13qu"]
+[gd_scene load_steps=53 format=4 uid="uid://bq6u41dlj13qu"]
 
 [ext_resource type="Script" path="res://Scenes/Level1Scene/GameManagerController.cs" id="1_ay083"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_h4sir"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bkv3pba0hsdpf" path="res://Scenes/Level1Scene/healthbarUnder-4.png" id="7_dfs65"]
 [ext_resource type="Texture2D" uid="uid://btm41081r1p3l" path="res://Scenes/Level1Scene/healthbarProgress-4.png" id="8_qbhf1"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.cs" id="9_7cxxb"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="13_pp433"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3erx"]
 texture = ExtResource("1_h4sir")
@@ -568,6 +569,33 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ydo1"]
+bg_color = Color(0.767685, 0.790104, 0.923885, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 3
+shadow_offset = Vector2(0, 2.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3f04"]
+bg_color = Color(0.601168, 0.632799, 0.853332, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 3
+shadow_offset = Vector2(0, 2.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gy5gm"]
+bg_color = Color(0.809198, 0.828183, 0.93846, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 3
+shadow_offset = Vector2(0, 2.5)
+
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("RespawnPoint")]
 position = Vector2(-18, -72)
 script = ExtResource("1_ay083")
@@ -748,8 +776,93 @@ script = ExtResource("9_7cxxb")
 player = NodePath("../../../CharacterBody2D")
 metadata/_edit_use_anchors_ = true
 
+[node name="PauseMenu" type="Node" parent="UI"]
+script = ExtResource("13_pp433")
+
+[node name="PausePanel" type="Panel" parent="UI/PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GamePaused" type="Label" parent="UI/PauseMenu/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = -260.0
+offset_right = 201.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_b3x07")
+theme_override_font_sizes/font_size = 80
+text = "GAME
+PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseMenu/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = 17.0
+offset_right = 127.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Resume" type="Button" parent="UI/PauseMenu/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.129412, 0.14902, 0.180392, 1)
+theme_override_fonts/font = ExtResource("3_b3x07")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ydo1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t3f04")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gy5gm")
+text = "RESUME"
+
+[node name="MainMenu" type="Button" parent="UI/PauseMenu/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.129412, 0.14902, 0.180392, 1)
+theme_override_fonts/font = ExtResource("3_b3x07")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ydo1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t3f04")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gy5gm")
+text = "MAIN MENU"
+
 [connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="SpikeTrap/SpikeTrap/Area2D" to="SpikeTrap/SpikeTrap" method="_on_area_2d_body_entered"]
 [connection signal="Death" from="CharacterBody2D" to="." method="_on_character_body_2d_death"]
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="NextLevel" to="NextLevel" method="_on_body_entered"]
+[connection signal="pressed" from="UI/PauseMenu/PausePanel/VBoxContainer/Resume" to="UI/PauseMenu" method="OnResumePressed"]
+[connection signal="pressed" from="UI/PauseMenu/PausePanel/VBoxContainer/MainMenu" to="UI/PauseMenu" method="OnMainMenuPressed"]
