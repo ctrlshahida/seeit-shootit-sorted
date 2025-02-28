@@ -23,8 +23,13 @@ public override void _Ready()
         
         velocity.X = speed;
         // Set minX and maxX values based on your desired movement range
-        minX = -10; // Adjust as needed
-        maxX =10; // Adjust as needed
+        minX = -40; // Adjust as needed
+        maxX =40; // Adjust as needed
+
+        if(SceneFilePath == "/Users/batikanozdemir/Projects/SeeItShootItSortedProject/seeit-shootit-sorted/TfL Godot/seeit-shootit-sorted/Scenes/Level1Scene/playerTest.tscn"){
+            minX = -50;
+            maxX = 50;
+        }
 
        // Connect the body_entered signal from the Area2D child node to the enemy_contact() method
         // Correct signal connection syntax
