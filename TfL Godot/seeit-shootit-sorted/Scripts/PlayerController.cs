@@ -34,6 +34,12 @@ public partial class PlayerController : CharacterBody2D
         CurrentHealth = Mathf.Clamp(CurrentHealth + amount, 0, MaxHealth);
         EmitSignal("HealthChanged");
 
+        if (amount < 0) // Only play TakeDamage animation if losing health
+        {
+            GD.Print("Player TakeDamageAnimation");
+            _sprite.Play("TakeDamage");
+        }
+
         if(CurrentHealth <= 0){
             CurrentHealth = 0;
             _sprite.Play("death");
@@ -43,6 +49,12 @@ public partial class PlayerController : CharacterBody2D
             SetProcess(false);
             // EmitSignal(nameof(Death));
         }
+
+        // if(CurrentHealth == 75)
+        // {
+        //     GD.Print("Player TakeDamageAnimation");
+        //     _sprite.Play("TakeDamage");
+        // }
     }
 
     private void _on_animated_sprite_2d_animation_finished()
@@ -62,6 +74,11 @@ public partial class PlayerController : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (_sprite.Animation == "TakeDamage" && _sprite.IsPlaying())
+        {
+            return; // Don't override TakeDamage animation
+        }
+        
         Vector2 velocity = Velocity;
 
         // Get the default gravity value from project settings

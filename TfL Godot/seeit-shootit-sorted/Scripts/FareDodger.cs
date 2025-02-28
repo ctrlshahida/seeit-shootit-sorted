@@ -28,8 +28,8 @@ public override void _Ready()
 
        // Connect the body_entered signal from the Area2D child node to the enemy_contact() method
         // Correct signal connection syntax
-        var enemyArea = GetNode<Area2D>("EnemyArea2D");
-        enemyArea.Connect("body_entered", new Callable(this, "enemy_contact"));
+        // var enemyArea = GetNode<Area2D>("EnemyArea2D");
+        // enemyArea.Connect("body_entered", new Callable(this, "enemy_contact"));
     }
 
 
@@ -81,12 +81,13 @@ public override void _PhysicsProcess(double delta)
         MoveAndSlide();
     }
 
-    public void enemy_contact(Node2D body)
+    public void _on_enemy_area_2d_body_entered(Node2D body)
     {
         if(body is PlayerController)
         {
-            PlayerController player = body as PlayerController;
-            player.TakeDamage();
+            GD.Print("Body: " + body + " hurt by enemy");
+            PlayerController pc = body as PlayerController;
+            pc.ChangeHealth(-25);
         }
     }
 }

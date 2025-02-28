@@ -1,9 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://cxga1lr06x8sy"]
+[gd_scene load_steps=30 format=4 uid="uid://cxga1lr06x8sy"]
 
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_8e4o2"]
 [ext_resource type="PackedScene" uid="uid://cjrr1s3ad2uwb" path="res://Scenes/Enemies/fare_dodger.tscn" id="2_bghmw"]
+[ext_resource type="Texture2D" uid="uid://dn5wdtj3ln44v" path="res://Scenes/Enemies/TFL_Engineer_damage1 (1).png" id="3_4kylp"]
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="3_07ewh"]
 [ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://Scenes/Level1Scene/TFL_Engineer.png" id="4_2iy6y"]
+[ext_resource type="Texture2D" uid="uid://ub1p6omsmy4m" path="res://Scenes/Enemies/TFL_Engineer_damage2 (1).png" id="4_vswcn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3erx"]
 texture = ExtResource("1_8e4o2")
@@ -153,9 +155,24 @@ texture = ExtResource("1_8e4o2")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_n3erx")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y1mlm"]
-radius = 7.0
-height = 26.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ag1pb"]
+size = Vector2(24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjrco"]
+atlas = ExtResource("3_4kylp")
+region = Rect2(34, 0, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycgdi"]
+atlas = ExtResource("4_vswcn")
+region = Rect2(34, 0, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugovn"]
+atlas = ExtResource("3_4kylp")
+region = Rect2(34, 0, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sygb"]
+atlas = ExtResource("4_vswcn")
+region = Rect2(34, 0, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iejed"]
 atlas = ExtResource("4_2iy6y")
@@ -166,6 +183,10 @@ atlas = ExtResource("4_2iy6y")
 region = Rect2(0, 0, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep1m6"]
+atlas = ExtResource("4_2iy6y")
+region = Rect2(0, 224, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iekj"]
 atlas = ExtResource("4_2iy6y")
 region = Rect2(0, 224, 34, 32)
 
@@ -213,8 +234,25 @@ region = Rect2(0, 64, 34, 32)
 atlas = ExtResource("4_2iy6y")
 region = Rect2(34, 64, 34, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dujqt"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rfpj"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjrco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycgdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugovn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sygb")
+}],
+"loop": false,
+"name": &"TakeDamage",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iejed")
@@ -224,10 +262,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ep1m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iekj")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -291,23 +332,25 @@ animations = [{
 tile_map_data = PackedByteArray("AAAXABQAAAABAAEAAAAYABQAAAABAAEAAAAZABQAAAABAAEAAAAaABQAAAABAAEAAAAbABQAAAABAAEAAAAbABMAAAABAAEAAAAcABMAAAABAAEAAAAdABMAAAABAAEAAAAeABMAAAABAAEAAAAfABMAAAABAAEAAAAgABMAAAABAAEAAAAhABMAAAABAAEAAAAiABMAAAABAAEAAAAjABMAAAABAAEAAAAkABMAAAABAAEAAAAlABMAAAABAAEAAAAmABMAAAABAAEAAAAnABIAAAABAAEAAAAoABIAAAABAAEAAAApABIAAAABAAEAAAAqABIAAAABAAEAAAArABIAAAABAAEAAAAsABIAAAABAAEAAAAtABIAAAABAAEAAAAuABIAAAABAAEAAAAvABIAAAABAAEAAAAvABEAAAABAAEAAAAwABEAAAABAAEAAAAxABEAAAABAAEAAAAyABEAAAABAAEAAAAzABEAAAABAAEAAAA0ABEAAAABAAEAAAA1ABEAAAABAAEAAAA2ABEAAAABAAEAAAA2ABIAAAABAAEAAAA2ABMAAAABAAEAAAA2ABQAAAABAAEAAAA2ABUAAAABAAEAAAA2ABYAAAABAAEAAAA2ABcAAAABAAEAAAA3ABcAAAABAAEAAAA4ABcAAAABAAEAAAA5ABcAAAABAAEAAAA6ABcAAAABAAEAAAA7ABcAAAABAAEAAAA7ABYAAAABAAEAAAA8ABYAAAABAAEAAAA9ABYAAAABAAEAAAA9ABUAAAABAAEAAAA+ABUAAAABAAEAAAA+ABQAAAABAAEAAAA/ABQAAAABAAEAAABAABQAAAABAAEAAABAABMAAAABAAEAAABBABMAAAABAAEAAABBABIAAAABAAEAAABCABIAAAABAAEAAABDABIAAAABAAEAAABDABEAAAABAAEAAAAXABUAAAABAAEAAAAXABYAAAABAAEAAAAXABcAAAABAAEAAAAWABcAAAABAAEAAAAVABcAAAABAAEAAAAUABcAAAABAAEAAAAUABgAAAABAAEAAAATABgAAAABAAEAAAASABgAAAABAAEAAAARABgAAAABAAEAAAAQABgAAAABAAEAAAAPABgAAAABAAEAAAAOABgAAAABAAEAAAANABgAAAABAAEAAAAMABgAAAABAAEAAAALABgAAAABAAEAAAAKABgAAAABAAEAAAAJABgAAAABAAEAAAAIABgAAAABAAEAAAAHABgAAAABAAEAAAAGABgAAAABAAEAAAAFABgAAAABAAEAAAAEABgAAAABAAEAAAADABgAAAABAAEAAAADABcAAAABAAEAAAADABYAAAABAAEAAAADABUAAAABAAEAAAADABQAAAABAAEAAAADABMAAAABAAEAAAADABIAAAABAAEAAAADABEAAAABAAEAAAADABAAAAABAAEAAAADAA8AAAABAAEAAAADAA4AAAABAAEAAAADAA0AAAABAAEAAAADAAwAAAABAAEAAAADAAsAAAABAAEAAABEABEAAAABAAEAAABFABEAAAABAAEAAABGABEAAAABAAEAAABHABEAAAABAAEAAABIABEAAAABAAEAAABJABEAAAABAAEAAABKABEAAAABAAEAAABLABEAAAABAAEAAABMABEAAAABAAEAAABNABEAAAABAAEAAABNABAAAAABAAEAAABNAA8AAAABAAEAAABOAA4AAAABAAEAAABOAA0AAAABAAEAAABOAAwAAAABAAEAAABOAAsAAAABAAEAAABOAAoAAAABAAEAAABOAAkAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_edrfv")
 
-[node name="FareDodger" parent="." instance=ExtResource("2_bghmw")]
-position = Vector2(853, 258)
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(124, 91)
 script = ExtResource("3_07ewh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(700, 275)
-shape = SubResource("CapsuleShape2D_y1mlm")
+position = Vector2(1, 20)
+shape = SubResource("RectangleShape2D_ag1pb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(704, 273)
-sprite_frames = SubResource("SpriteFrames_dujqt")
-animation = &"idle"
+position = Vector2(2, 17)
+sprite_frames = SubResource("SpriteFrames_6rfpj")
+animation = &"TakeDamage"
 autoplay = "idle"
-frame_progress = 0.602214
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(700, 274)
-zoom = Vector2(4, 4)
+position = Vector2(101, 17)
+zoom = Vector2(3, 3)
+
+[node name="FareDodger" parent="." instance=ExtResource("2_bghmw")]
+position = Vector2(853, 258)
+
+[connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
