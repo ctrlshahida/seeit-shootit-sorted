@@ -1,8 +1,10 @@
-[gd_scene load_steps=25 format=4 uid="uid://nxqn864prslg"]
+[gd_scene load_steps=32 format=4 uid="uid://nxqn864prslg"]
 
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_ywufh"]
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="2_j115s"]
+[ext_resource type="Texture2D" uid="uid://dn5wdtj3ln44v" path="res://Scenes/Enemies/TFL_Engineer_damage1 (1).png" id="3_010eu"]
 [ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://Scenes/Level1Scene/TFL_Engineer.png" id="3_am0w4"]
+[ext_resource type="Texture2D" uid="uid://ub1p6omsmy4m" path="res://Scenes/Enemies/TFL_Engineer_damage2 (1).png" id="4_63s4o"]
 [ext_resource type="Texture2D" uid="uid://bkv3pba0hsdpf" path="res://Scenes/Level1Scene/healthbarUnder-4.png" id="4_s6ug1"]
 [ext_resource type="Texture2D" uid="uid://btm41081r1p3l" path="res://Scenes/Level1Scene/healthbarProgress-4.png" id="5_ofm44"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.cs" id="6_dqnqr"]
@@ -156,9 +158,24 @@ texture = ExtResource("1_ywufh")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_a02tf")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vses0"]
-radius = 9.0
-height = 26.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ekjq"]
+size = Vector2(24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjrco"]
+atlas = ExtResource("3_010eu")
+region = Rect2(34, 0, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycgdi"]
+atlas = ExtResource("4_63s4o")
+region = Rect2(34, 0, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugovn"]
+atlas = ExtResource("3_010eu")
+region = Rect2(34, 0, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sygb"]
+atlas = ExtResource("4_63s4o")
+region = Rect2(34, 0, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iejed"]
 atlas = ExtResource("3_am0w4")
@@ -169,6 +186,10 @@ atlas = ExtResource("3_am0w4")
 region = Rect2(0, 0, 34, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep1m6"]
+atlas = ExtResource("3_am0w4")
+region = Rect2(0, 224, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iekj"]
 atlas = ExtResource("3_am0w4")
 region = Rect2(0, 224, 34, 32)
 
@@ -216,8 +237,25 @@ region = Rect2(0, 64, 34, 32)
 atlas = ExtResource("3_am0w4")
 region = Rect2(34, 64, 34, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ju3sh"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2o3mi"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjrco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycgdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugovn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sygb")
+}],
+"loop": false,
+"name": &"TakeDamage",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iejed")
@@ -227,10 +265,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ep1m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iekj")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -295,22 +336,23 @@ tile_map_data = PackedByteArray("AAAZAB4AAAACAAEAAAAaAB4AAAACAAEAAAAbAB4AAAACAAE
 tile_set = SubResource("TileSet_tpiw7")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(405, 292)
+position = Vector2(395, 300)
 script = ExtResource("2_j115s")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1, 20)
-shape = SubResource("CapsuleShape2D_vses0")
+position = Vector2(1, 20)
+shape = SubResource("RectangleShape2D_5ekjq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(2, 16)
-sprite_frames = SubResource("SpriteFrames_ju3sh")
-animation = &"shoot"
+position = Vector2(2, 17)
+sprite_frames = SubResource("SpriteFrames_2o3mi")
+animation = &"TakeDamage"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(101, 17)
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -337,5 +379,7 @@ grow_horizontal = 0
 texture_under = ExtResource("4_s6ug1")
 texture_progress = ExtResource("5_ofm44")
 script = ExtResource("6_dqnqr")
-player = NodePath("../../../CharacterBody2D")
+player = NodePath("")
 metadata/_edit_use_anchors_ = true
+
+[connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
