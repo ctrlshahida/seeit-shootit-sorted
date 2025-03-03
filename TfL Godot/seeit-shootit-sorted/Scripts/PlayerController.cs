@@ -20,18 +20,6 @@ public partial class PlayerController : CharacterBody2D
 
     PackedScene gunScene = (PackedScene)ResourceLoader.Load("res://Scenes/gunAndShooting/gun.tscn");
 
-    // public void _Process(float delta)
-    // {
-    //     if (Input.IsActionJustPressed("shoot"))
-    //     { 
-    //         GD.PrintErr("space button works i guess");
-    //         Shoot();
-    //     }
-    //     else{
-    //         GD.PrintErr("else hit");
-    //     }
-    // }
-
     public void Shoot()
     {
         GD.Print("Shoot is being hit");
@@ -58,15 +46,6 @@ public partial class PlayerController : CharacterBody2D
                 ? DisplayServer.WindowMode.Windowed
                 : DisplayServer.WindowMode.Fullscreen);
         }
-
-        // if (Input.IsActionJustPressed("shoot"))
-        // { 
-        //     GD.PrintErr("space button works i guess");
-        //     Shoot();
-        // }
-        // else{
-        //     GD.PrintErr("else hit");
-        // }
     }
 
     public void ChangeHealth(int amount)
@@ -84,17 +63,9 @@ public partial class PlayerController : CharacterBody2D
             CurrentHealth = 0;
             _sprite.Play("death");
             GD.Print("Player has died");
-            //_sprite.AnimationFinished += _on_animated_sprite_2d_animation_finished;
             SetPhysicsProcess(false); // Stop player movement
             SetProcess(false);
-            // EmitSignal(nameof(Death));
         }
-
-        // if(CurrentHealth == 75)
-        // {
-        //     GD.Print("Player TakeDamageAnimation");
-        //     _sprite.Play("TakeDamage");
-        // }
     }
 
     private void _on_animated_sprite_2d_animation_finished()
@@ -103,8 +74,6 @@ public partial class PlayerController : CharacterBody2D
         {
             GD.Print("Respawning player after death animation");
 
-            // Disconnect the signal to prevent multiple calls
-            //_sprite.AnimationFinished -= _on_animated_sprite_2d_animation_finished;
 
             EmitSignal(nameof(Death));
         }
