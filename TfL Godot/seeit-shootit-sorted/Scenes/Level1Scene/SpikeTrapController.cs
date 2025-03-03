@@ -20,4 +20,14 @@ public partial class SpikeTrapController : Node
 			pc.ChangeHealth(-100);
 		}
 	}
+
+
+	private void _on_area_2d_body_entered_FD(Node2D bodyAS)
+    {
+    GD.Print("Enemy: " + bodyAS + " has entered");
+        if (bodyAS is FareDodger_AS){
+            FareDodger_AS fd = bodyAS as FareDodger_AS;
+            fd.ChangeHealth(-100);
+    	}
+	}
 }
