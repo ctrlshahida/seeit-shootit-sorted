@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=4 uid="uid://nxqn864prslg"]
+[gd_scene load_steps=36 format=4 uid="uid://nxqn864prslg"]
 
+[ext_resource type="Script" path="res://Scenes/Level2Scene/Level2GameController.cs" id="1_2yy7e"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_ywufh"]
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="2_j115s"]
 [ext_resource type="Texture2D" uid="uid://dn5wdtj3ln44v" path="res://Scenes/Enemies/TFL_Engineer_damage1 (1).png" id="3_010eu"]
@@ -8,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bkv3pba0hsdpf" path="res://Scenes/Level1Scene/healthbarUnder-4.png" id="4_s6ug1"]
 [ext_resource type="Texture2D" uid="uid://btm41081r1p3l" path="res://Scenes/Level1Scene/healthbarProgress-4.png" id="5_ofm44"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.cs" id="6_dqnqr"]
+[ext_resource type="PackedScene" uid="uid://rmj3vjhkch6i" path="res://Scenes/gunAndShooting/gun.tscn" id="10_upt50"]
+[ext_resource type="PackedScene" uid="uid://bodb35ec0npgb" path="res://moving_platform.tscn" id="11_bgsu6"]
+[ext_resource type="PackedScene" uid="uid://dbb7q7gw37r1h" path="res://moving_platform_vertical.tscn" id="12_c8eyh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a02tf"]
 texture = ExtResource("1_ywufh")
@@ -158,7 +162,7 @@ texture = ExtResource("1_ywufh")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_a02tf")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ekjq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8oip"]
 size = Vector2(24, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjrco"]
@@ -237,7 +241,7 @@ region = Rect2(0, 64, 34, 32)
 atlas = ExtResource("3_am0w4")
 region = Rect2(34, 64, 34, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2o3mi"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bs83c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -328,31 +332,13 @@ animations = [{
 }]
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_2yy7e")
 
-[node name="Node" type="Node" parent="."]
+[node name="MyMap" type="Node" parent="."]
 
-[node name="Foreground" type="TileMapLayer" parent="Node"]
-tile_map_data = PackedByteArray("AAAZAB4AAAACAAEAAAAaAB4AAAACAAEAAAAbAB4AAAACAAEAAAAcAB4AAAACAAEAAAAdAB4AAAACAAEAAAAeAB4AAAACAAEAAAAfAB4AAAACAAEAAAAgAB4AAAACAAEAAAAhAB4AAAACAAEAAAAiAB4AAAACAAEAAAAjAB4AAAACAAEAAAAkAB4AAAACAAEAAAAlAB4AAAACAAEAAAAmAB4AAAACAAEAAAAnAB4AAAACAAEAAAAoAB4AAAACAAEAAAApAB4AAAACAAEAAAAqAB4AAAACAAEAAAArAB4AAAACAAEAAAArAB0AAAACAAEAAAAsAB0AAAACAAEAAAAtAB0AAAACAAEAAAAuAB0AAAACAAEAAAAuABwAAAACAAEAAAAuABsAAAACAAEAAAAuABoAAAACAAEAAAAuABkAAAACAAEAAAAuABgAAAACAAEAAAAuABcAAAACAAEAAAAYAB4AAAACAAEAAAAYAB0AAAACAAEAAAAXAB0AAAACAAEAAAAXABwAAAACAAEAAAAWABsAAAACAAEAAAAWABoAAAACAAEAAAAWABkAAAACAAEAAAAVABkAAAACAAEAAAAVABgAAAACAAEAAAAVABcAAAACAAEAAAAUABYAAAACAAEAAAAUABUAAAACAAEAAAA=")
+[node name="Foreground" type="TileMapLayer" parent="MyMap"]
+tile_map_data = PackedByteArray("AAAAABQAAAADAAIAAAAAABMAAAADAAIAAAAAABIAAAADAAIAAAAAABEAAAADAAIAAAAAABAAAAADAAIAAAAAAA8AAAADAAIAAAAAAA4AAAADAAIAAAAAAA0AAAADAAIAAAAAAAwAAAADAAIAAAAAAAsAAAADAAIAAAAAAAoAAAADAAIAAAAAAAkAAAADAAIAAAAAAAgAAAADAAIAAAAAAAcAAAADAAIAAAAAAAYAAAADAAIAAAAAAAUAAAADAAIAAAABABQAAAACAAEAAAACABQAAAACAAEAAAADABQAAAACAAEAAAAEABQAAAACAAEAAAAFABQAAAACAAEAAAAGABQAAAACAAEAAAAHABQAAAACAAEAAAAIABQAAAACAAEAAAAJABQAAAACAAEAAAAKABQAAAACAAEAAAALABQAAAACAAEAAAAMABQAAAACAAEAAAANABQAAAACAAEAAAAOABQAAAACAAEAAAAPABQAAAACAAEAAAAPABMAAAACAAEAAAAPABIAAAACAAEAAAAPABEAAAACAAEAAAAQABEAAAACAAEAAAARABEAAAACAAEAAAASABEAAAACAAEAAAATABEAAAACAAEAAAAUABEAAAACAAEAAAAUABIAAAACAAEAAAAUABMAAAACAAEAAAAUABQAAAACAAEAAAAUABUAAAACAAEAAAAUABYAAAACAAEAAAAUABcAAAACAAEAAAAUABgAAAACAAEAAAAUABkAAAACAAEAAAAUABoAAAACAAEAAAAVABoAAAACAAEAAAAWABoAAAACAAEAAAAXABoAAAACAAEAAAAYABoAAAACAAEAAAAZABoAAAACAAEAAAAaABoAAAACAAEAAAAbABoAAAACAAEAAAAcABoAAAACAAEAAAAdABoAAAACAAEAAAAeABoAAAACAAEAAAAfABoAAAACAAEAAAAgABoAAAACAAEAAAAhABoAAAACAAEAAAAiABoAAAACAAEAAAAjABoAAAACAAEAAAAkABoAAAACAAEAAAAlABoAAAACAAEAAAAmABoAAAACAAEAAAAnABoAAAACAAEAAAAoABoAAAACAAEAAAApABoAAAACAAEAAAAqABoAAAACAAEAAAArABoAAAACAAEAAAAsABoAAAACAAEAAAAtABoAAAACAAEAAAAuABoAAAACAAEAAAAvABoAAAACAAEAAAAwABoAAAACAAEAAAAxABoAAAACAAEAAAAyABoAAAACAAEAAAAzABoAAAACAAEAAAA0ABoAAAACAAEAAAA1ABoAAAACAAEAAAA2ABoAAAACAAEAAAA3ABoAAAACAAEAAAA4ABoAAAACAAEAAAA5ABoAAAACAAEAAAA6ABoAAAACAAEAAAA7ABoAAAACAAEAAAA8ABoAAAACAAEAAAA9ABoAAAACAAEAAAA+ABoAAAACAAEAAAA+ABkAAAACAAEAAAA+ABIAAAACAAEAAAA+ABMAAAACAAEAAAA+ABQAAAACAAEAAAA+ABUAAAACAAEAAAA+ABYAAAACAAEAAAA+ABcAAAACAAEAAAA+ABgAAAACAAEAAAA+ABEAAAACAAEAAAA/ABEAAAACAAEAAABAABEAAAACAAEAAABBABEAAAACAAEAAABCABEAAAACAAEAAABDABEAAAACAAEAAABEABEAAAACAAEAAAAtAA8AAAACAAIAAAAuAA8AAAACAAIAAAAvAA8AAAACAAIAAAAwAA8AAAACAAIAAAAwABAAAAACAAIAAAAvABAAAAACAAIAAAAuABAAAAACAAIAAAAtABAAAAACAAIAAAAsAA8AAAACAAIAAAArAA8AAAACAAIAAAArABAAAAACAAIAAAAsABAAAAACAAIAAAAqAA8AAAACAAIAAAAqABAAAAACAAIAAAA=")
 tile_set = SubResource("TileSet_tpiw7")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(395, 300)
-script = ExtResource("2_j115s")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(1, 20)
-shape = SubResource("RectangleShape2D_5ekjq")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(2, 17)
-sprite_frames = SubResource("SpriteFrames_2o3mi")
-animation = &"TakeDamage"
-autoplay = "idle"
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(101, 17)
-zoom = Vector2(3, 3)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -365,7 +351,7 @@ offset_bottom = 23.0
 grow_horizontal = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Health Bar" node_paths=PackedStringArray("player")]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Health Bar"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
@@ -379,7 +365,39 @@ grow_horizontal = 0
 texture_under = ExtResource("4_s6ug1")
 texture_progress = ExtResource("5_ofm44")
 script = ExtResource("6_dqnqr")
-player = NodePath("")
 metadata/_edit_use_anchors_ = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(127, 91)
+script = ExtResource("2_j115s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1, 20)
+shape = SubResource("RectangleShape2D_x8oip")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(2, 17)
+sprite_frames = SubResource("SpriteFrames_bs83c")
+animation = &"shoot"
+autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(101, 17)
+zoom = Vector2(3, 3)
+
+[node name="Muzzle" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(-20, -56)
+
+[node name="Gun" parent="." instance=ExtResource("10_upt50")]
+position = Vector2(107, 35)
+
+[node name="GunContainer" type="Node2D" parent="."]
+position = Vector2(7, -1)
+
+[node name="MovingPlatform" parent="." instance=ExtResource("11_bgsu6")]
+position = Vector2(387, 250)
+
+[node name="movingPlatformVertical" parent="." instance=ExtResource("12_c8eyh")]
+position = Vector2(847, 77)
 
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
