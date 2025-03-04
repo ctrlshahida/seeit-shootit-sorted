@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=4 uid="uid://bq6u41dlj13qu"]
+[gd_scene load_steps=65 format=4 uid="uid://bq6u41dlj13qu"]
 
 [ext_resource type="Script" path="res://Scenes/Level1Scene/GameManagerController.cs" id="1_ay083"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_h4sir"]
@@ -511,6 +511,14 @@ font_color = Color(1, 0, 0, 1)
 font = ExtResource("3_b3x07")
 font_color = Color(1, 1, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_5jqod"]
+font = ExtResource("3_b3x07")
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ditg5"]
+font = ExtResource("3_b3x07")
+font_color = Color(1, 1, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tq8jg"]
 size = Vector2(97, 8.3125)
 
@@ -837,6 +845,27 @@ label_settings = SubResource("LabelSettings_i3u8f")
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="ShootingInstructions" type="Label" parent="MyMap"]
+z_index = -1
+offset_left = 1456.0
+offset_top = 632.0
+offset_right = 1550.0
+offset_bottom = 744.0
+text = "Get ready to shoot the
+Fare Dodgers!"
+label_settings = SubResource("LabelSettings_5jqod")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ShootingInstructions2" type="Label" parent="MyMap"]
+z_index = -1
+offset_left = 1599.0
+offset_top = 408.0
+offset_right = 1775.0
+offset_bottom = 431.0
+text = "Press SPACE to shoot!"
+label_settings = SubResource("LabelSettings_ditg5")
+
 [node name="SpikeTrap" type="Node" parent="."]
 script = ExtResource("4_ifw0e")
 
@@ -1055,10 +1084,10 @@ position = Vector2(7, -1)
 position = Vector2(2016, 559)
 
 [node name="FareDodger_animated_sprite2" parent="." instance=ExtResource("17_qiqie")]
-position = Vector2(311, 344)
+position = Vector2(2091, 560)
 
-[connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered_FD"]
+[connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="SpikeTrap/SpikeTrap/Area2D" to="SpikeTrap/SpikeTrap" method="_on_area_2d_body_entered"]
 [connection signal="Death" from="CharacterBody2D" to="." method="_on_character_body_2d_death"]
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
