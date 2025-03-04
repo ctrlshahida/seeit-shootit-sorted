@@ -35,7 +35,9 @@ public partial class PlayerController : CharacterBody2D
         muzzle = GetNode("Muzzle");
 
         MaxHealth = 100;
-        CurrentHealth = MaxHealth;
+
+        CurrentHealth = GlobalState.Instance.PlayerHealth;
+        GlobalState.Instance.Player = this;
     }
 
     public override void _Process(double delta)
@@ -46,6 +48,8 @@ public partial class PlayerController : CharacterBody2D
                 ? DisplayServer.WindowMode.Windowed
                 : DisplayServer.WindowMode.Fullscreen);
         }
+
+        GlobalState.Instance.PlayerHealth = CurrentHealth;
     }
 
     public void ChangeHealth(int amount)

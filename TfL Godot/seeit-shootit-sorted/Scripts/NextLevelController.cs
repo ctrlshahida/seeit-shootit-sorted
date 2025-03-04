@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 public partial class NextLevelController : Area2D
 {
@@ -24,8 +25,10 @@ public partial class NextLevelController : Area2D
         GD.Print("Player entered portal: " + body.Name);
 
         // Check if the player entered
-        if (body is PlayerController)
+        if (body is PlayerController pc)
         {
+            GlobalState.Instance.PlayerHealth = pc.CurrentHealth;
+
             GetTree().ChangeSceneToFile("Scenes/Level2Scene/level2Scene.tscn"); // Change to the correct scene path
         }
     }
