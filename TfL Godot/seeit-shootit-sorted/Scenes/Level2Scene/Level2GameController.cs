@@ -5,7 +5,6 @@ public partial class Level2GameController : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export]
-
 	private Node gunContainer;
 	private PlayerController player;
 

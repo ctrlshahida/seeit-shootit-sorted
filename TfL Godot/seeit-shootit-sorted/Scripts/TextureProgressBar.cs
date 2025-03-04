@@ -9,6 +9,8 @@ public partial class TextureProgressBar : Godot.TextureProgressBar
     {
         base._Ready();
 
+        player = GlobalState.Instance.Player;
+
         if (player != null)
         {
             player.HealthChanged += UpdateHealthBar;

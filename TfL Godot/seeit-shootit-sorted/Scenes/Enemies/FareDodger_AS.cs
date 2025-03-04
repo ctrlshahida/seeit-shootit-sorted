@@ -11,7 +11,7 @@ public partial class FareDodger_AS : CharacterBody2D
     // Variables
     private Vector2 velocity;
     private int gravity = 2000;
-    private int speed = 180;
+    private int speed = 190;
     private float oscillationPeriod = 3.0f;
     private float minX, maxX;
     private bool isOnGround;
@@ -24,6 +24,7 @@ public partial class FareDodger_AS : CharacterBody2D
 
     // Signal for death event
     [Signal] public delegate void DeathEventHandler();
+    [Signal] public delegate void HealthChangedEventHandler();
 
     public override void _Ready()
     {
@@ -31,41 +32,43 @@ public partial class FareDodger_AS : CharacterBody2D
         Sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         bottomLeft = GetNode<RayCast2D>("LeftRaycast");
         bottomRight = GetNode<RayCast2D>("RightRaycast");
-        
-            // Disconnect the signal only if it's already connected
-        if (Sprite != null && Sprite.IsConnected("animation_finished", new Callable(this, "_on_animation_finished")))
+
+        // Connect the "animation_finished" signal safely
+        if (Sprite != null)
         {
-            Sprite.Disconnect("animation_finished", new Callable(this, "_on_animation_finished"));
+            // Disconnect any previous connection to avoid redundant connections
+            if (Sprite.IsConnected("animation_finished", new Callable(this, "_on_animated_sprite_2d_animation_finished_fd")))
+            {
+                Sprite.Disconnect("animation_finished", new Callable(this, "_on_animated_sprite_2d_animation_finished_fd"));
+            }
+
+            // Connect the "animation_finished" signal
+            GD.Print("Connecting animation_finished signal...");
+            Sprite.Connect("animation_finished", new Callable(this, "_on_animation_finished"));
         }
-    	// Connect the "animation_finished" signal to the handler
-		if (Sprite != null)
-		{
-			GD.Print("Connecting animation_finished signal...");
-			Sprite.Connect("animation_finished", new Callable(this, "_on_animation_finished"));
-		}
-		else
-		{
-			GD.PrintErr("Sprite node is not found!");
-		}
+        else
+        {
+            GD.PrintErr("Sprite node is not found!");
+        }
 
         // Set initial velocity
         velocity.X = speed;
 
         // Set range for movement
-        minX = -40;
-        maxX = 40;
+        minX = -30;
+        maxX = 30;
 
         MaxHealth = 50;
         CurrentHealth = MaxHealth;
     }
 
     // Signal handler when an animation finishes
-    public void _on_animation_finished(string animation_name)
+    public void _on_animated_sprite_2d_animation_finished_fd(string animation_name)
     {
         if (animation_name == "Death") // When the death animation finishes
         {
             GD.Print("Enemy killed after death animation");
-            EmitSignal(nameof(Death));
+            EmitSignal(nameof(Death));  // Emit the death signal
             QueueFree();  // Remove the enemy from the scene
         }
 
@@ -87,7 +90,7 @@ public partial class FareDodger_AS : CharacterBody2D
     public void ChangeHealth(int amount)
     {
         CurrentHealth = Mathf.Clamp(CurrentHealth + amount, 0, MaxHealth);
-        EmitSignal("HealthChanged");
+        EmitSignal(nameof(HealthChangedEventHandler));
 
         if (amount < 0)  // Only play TakeDamage animation if losing health
         {
@@ -100,9 +103,21 @@ public partial class FareDodger_AS : CharacterBody2D
             CurrentHealth = 0;
             Sprite.Play("Death");
             GD.Print("Enemy has died");
-            SetPhysicsProcess(false); // Stop player movement
+
+            // Disable physics and processes
+            SetPhysicsProcess(false);
             SetProcess(false);
+
+            // Directly call the Death handler after the death animation
+            GetTree().CreateTimer(2.0f).Connect("timeout", new Callable(this, "_on_death_animation_finished"));
         }
+    }
+
+    // This method is called after the death animation has finished
+    private void _on_death_animation_finished()
+    {
+        GD.Print("Enemy removed after death animation.");
+        QueueFree();  // Remove the enemy from the scene
     }
 
     // Called every frame
@@ -113,12 +128,6 @@ public partial class FareDodger_AS : CharacterBody2D
         {
             GD.Print("not attacking");
             Sprite.Play("Move");
-            // If we're not attacking, play the "Move" animation
-            // if (Sprite.Animation != "Move")  // Ensure it's not already playing
-            // {
-            //     GD.Print("Switching to Move animation.");
-            //     Sprite.Play("Move");  // Play "Move" animation
-            // }
         }
 
         // AI-controlled movement (moving back and forth)
@@ -126,6 +135,16 @@ public partial class FareDodger_AS : CharacterBody2D
 
         if (isOnGround)
         {
+                    // Check for wall collisions using RayCast2D
+        bool isFacingWallLeft = bottomLeft.IsColliding();
+        bool isFacingWallRight = bottomRight.IsColliding();
+
+        if (isFacingWallLeft || isFacingWallRight)
+        {
+            // Reverse the movement direction when colliding with a wall
+            velocity.X = -velocity.X;
+            GD.Print("Wall detected! Reversing direction.");
+        }
             // Implement basic oscillation-based movement
             float timeInSeconds = Time.GetTicksMsec() / 1000.0f;
             float oscillationValue = Mathf.Sin(timeInSeconds / (float)oscillationPeriod);
@@ -164,6 +183,13 @@ public partial class FareDodger_AS : CharacterBody2D
     // Handle detection of the player and trigger attack animation
     public void _on_enemy_area_2d_body_entered_2(Node2D body)
     {
+        // Skip attack if the enemy is dead
+        if (CurrentHealth <= 0)
+        {
+            GD.Print("Enemy is dead, no attack will happen.");
+            return;  // Exit the function early if the enemy is dead
+        }
+
         if (body is PlayerController)
         {
             GD.Print("Detected body: " + body.GetType());
@@ -191,12 +217,43 @@ public partial class FareDodger_AS : CharacterBody2D
                 GD.Print("Player health changed by enemy attack");
                 pc.ChangeHealth(-25);
             }
+
+            // Delay after the attack animation, then trigger death sequence
+            if (Sprite.Animation == "Attack2")
+            {
+                SpriteFrames spriteFrames = Sprite.SpriteFrames;  // Correct property name in Godot 4.x
+                int frameCount = spriteFrames.GetFrameCount("Attack2");  // Get frame count for the Attack2 animation
+                float fps = (float)Sprite.SpriteFrames.GetAnimationSpeed("Attack2");  // Correct way to get the fps in Godot 4.x
+                float attackDuration = frameCount / fps;  // Calculate the duration of the attack animation
+
+                // Create a timer to wait for the animation to finish
+                GetTree().CreateTimer(attackDuration).Connect("timeout", new Callable(this, "_on_attack_animation_finished"));
+            }
         }
         else
         {
             GD.Print("Not a PlayerController. Detected: " + body.GetType());
         }
-		    // Add isAttacking reset here (though not ideal)
-    		// isAttacking = false;
     }
+
+    // This method is called after the attack animation finishes and the delay has elapsed
+    private void _on_attack_animation_finished()
+    {
+        GD.Print("Starting death sequence after attack animation delay");
+        Sprite.Play("Move");  // Play the move animation
+        GD.Print("Set the isAttacking back to false");
+
+        isAttacking = false;
+    }
+
+    // public void RespawnEnemy()
+    // {
+    // Reset health, state, or any other properties here
+    //     CurrentHealth = MaxHealth; // Restore enemy health
+    //     GD.Print("Enemy respawned");
+
+    // You may want to reset some other properties, like animation, position, etc.
+    //     Sprite.Play("Move");  // Assuming the enemy has an idle animation
+    //     SetPhysicsProcess(true);  // Enable physics processing for the enemy
+    // }
 }

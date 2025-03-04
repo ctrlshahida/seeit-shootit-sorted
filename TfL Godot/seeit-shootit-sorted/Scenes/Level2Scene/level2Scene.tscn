@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://nxqn864prslg"]
+[gd_scene load_steps=38 format=4 uid="uid://nxqn864prslg"]
 
 [ext_resource type="Script" path="res://Scenes/Level2Scene/Level2GameController.cs" id="1_2yy7e"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_ywufh"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://rmj3vjhkch6i" path="res://Scenes/gunAndShooting/gun.tscn" id="10_upt50"]
 [ext_resource type="PackedScene" uid="uid://bodb35ec0npgb" path="res://moving_platform.tscn" id="11_bgsu6"]
 [ext_resource type="PackedScene" uid="uid://dbb7q7gw37r1h" path="res://moving_platform_vertical.tscn" id="12_c8eyh"]
+[ext_resource type="Script" path="res://Scenes/Level1Scene/SpikeTrapController.cs" id="13_exejd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a02tf"]
 texture = ExtResource("1_ywufh")
@@ -331,6 +332,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_inv41"]
+size = Vector2(97, 8.3125)
+
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_2yy7e")
 
@@ -400,4 +404,26 @@ position = Vector2(387, 250)
 [node name="movingPlatformVertical" parent="." instance=ExtResource("12_c8eyh")]
 position = Vector2(847, 77)
 
+[node name="SpikeTrap" type="Node" parent="."]
+script = ExtResource("13_exejd")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpikeTrap"]
+position = Vector2(385, 407)
+scale = Vector2(2.20455, 2.05556)
+texture = ExtResource("1_ywufh")
+region_enabled = true
+region_rect = Rect2(37.1293, 230.51, 44.2217, 9.79195)
+
+[node name="Area2D" type="Area2D" parent="SpikeTrap"]
+position = Vector2(385, 409)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeTrap/Area2D"]
+position = Vector2(0.5, 2.15625)
+shape = SubResource("RectangleShape2D_inv41")
+
+[node name="RespawnPoint" type="Marker2D" parent="."]
+position = Vector2(97, 260)
+
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered_FD"]
