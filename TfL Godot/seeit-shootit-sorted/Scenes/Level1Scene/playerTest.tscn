@@ -1058,8 +1058,8 @@ position = Vector2(7, -1)
 position = Vector2(1394, 335)
 
 [connection signal="body_entered" from="SpikeTrap/Area2D" to="FareDodger" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered_FD"]
 [connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered_FD"]
 [connection signal="body_entered" from="SpikeTrap/SpikeTrap/Area2D" to="SpikeTrap/SpikeTrap" method="_on_area_2d_body_entered"]
 [connection signal="Death" from="CharacterBody2D" to="." method="_on_character_body_2d_death"]
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]

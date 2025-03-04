@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://nxqn864prslg"]
+[gd_scene load_steps=41 format=4 uid="uid://nxqn864prslg"]
 
 [ext_resource type="Script" path="res://Scenes/Level2Scene/Level2GameController.cs" id="1_2yy7e"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_ywufh"]
@@ -9,9 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://bkv3pba0hsdpf" path="res://Scenes/Level1Scene/healthbarUnder-4.png" id="4_s6ug1"]
 [ext_resource type="Texture2D" uid="uid://btm41081r1p3l" path="res://Scenes/Level1Scene/healthbarProgress-4.png" id="5_ofm44"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.cs" id="6_dqnqr"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="6_pp235"]
+[ext_resource type="FontFile" uid="uid://b3lnyk8e2oy2p" path="res://Assets/Fonts/I-pixel-u.ttf" id="7_j5bm4"]
 [ext_resource type="PackedScene" uid="uid://rmj3vjhkch6i" path="res://Scenes/gunAndShooting/gun.tscn" id="10_upt50"]
-[ext_resource type="PackedScene" uid="uid://bodb35ec0npgb" path="res://moving_platform.tscn" id="11_bgsu6"]
-[ext_resource type="PackedScene" uid="uid://dbb7q7gw37r1h" path="res://moving_platform_vertical.tscn" id="12_c8eyh"]
+[ext_resource type="PackedScene" path="res://moving_platform.tscn" id="11_bgsu6"]
+[ext_resource type="PackedScene" path="res://moving_platform_vertical.tscn" id="12_c8eyh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a02tf"]
 texture = ExtResource("1_ywufh")
@@ -161,6 +163,33 @@ texture = ExtResource("1_ywufh")
 [sub_resource type="TileSet" id="TileSet_tpiw7"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_a02tf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr52c"]
+bg_color = Color(0.767685, 0.790104, 0.923885, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 3
+shadow_offset = Vector2(0, 2.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rl53"]
+bg_color = Color(0.601168, 0.632799, 0.853332, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 3
+shadow_offset = Vector2(0, 2.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hero7"]
+bg_color = Color(0.809198, 0.828183, 0.93846, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 3
+shadow_offset = Vector2(0, 2.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8oip"]
 size = Vector2(24, 26)
@@ -367,6 +396,89 @@ texture_progress = ExtResource("5_ofm44")
 script = ExtResource("6_dqnqr")
 metadata/_edit_use_anchors_ = true
 
+[node name="PauseMenu" type="Node" parent="UI/Health Bar/TextureProgressBar"]
+script = ExtResource("6_pp235")
+
+[node name="PausePanel" type="Panel" parent="UI/Health Bar/TextureProgressBar/PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SEE IT" type="Label" parent="UI/Health Bar/TextureProgressBar/PauseMenu/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = -259.0
+offset_right = 201.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("7_j5bm4")
+theme_override_font_sizes/font_size = 80
+text = "GAME
+PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Health Bar/TextureProgressBar/PauseMenu/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -12.0
+offset_right = 127.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Resume" type="Button" parent="UI/Health Bar/TextureProgressBar/PauseMenu/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.129412, 0.14902, 0.180392, 1)
+theme_override_fonts/font = ExtResource("7_j5bm4")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_vr52c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4rl53")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hero7")
+text = "RESUME"
+
+[node name="MainMenu" type="Button" parent="UI/Health Bar/TextureProgressBar/PauseMenu/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.129412, 0.14902, 0.180392, 1)
+theme_override_fonts/font = ExtResource("7_j5bm4")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_vr52c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4rl53")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hero7")
+text = "MAIN MENU"
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(127, 91)
 script = ExtResource("2_j115s")
@@ -400,4 +512,6 @@ position = Vector2(387, 250)
 [node name="movingPlatformVertical" parent="." instance=ExtResource("12_c8eyh")]
 position = Vector2(847, 77)
 
+[connection signal="pressed" from="UI/Health Bar/TextureProgressBar/PauseMenu/PausePanel/VBoxContainer/Resume" to="UI/Health Bar/TextureProgressBar/PauseMenu" method="OnResumePressed"]
+[connection signal="pressed" from="UI/Health Bar/TextureProgressBar/PauseMenu/PausePanel/VBoxContainer/MainMenu" to="UI/Health Bar/TextureProgressBar/PauseMenu" method="OnMainMenuPressed"]
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
