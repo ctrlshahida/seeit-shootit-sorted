@@ -158,9 +158,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gxwkg")
 }],
-"loop": true,
+"loop": false,
 "name": &"TakeDamage",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8upp4"]
@@ -175,7 +175,7 @@ shape = SubResource("CapsuleShape2D_hjo1l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uya33")
-animation = &"Move"
+animation = &"TakeDamage"
 autoplay = "Move"
 
 [node name="LeftRaycast" type="RayCast2D" parent="."]

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading;
 
 public partial class FareDodger_AS : CharacterBody2D
 {
@@ -18,6 +19,7 @@ public partial class FareDodger_AS : CharacterBody2D
 
     private bool isAttacking = false;  // Flag to track if the attack is in progress
 
+    private bool isTakingDamage = false;
     // Health properties
     public int CurrentHealth { get; set; }
     public int MaxHealth { get; set; }
@@ -87,31 +89,34 @@ public partial class FareDodger_AS : CharacterBody2D
     }
 
     // Health change method
-    public void ChangeHealth(int amount)
+  public void ChangeHealth(int amount)
     {
-        CurrentHealth = Mathf.Clamp(CurrentHealth + amount, 0, MaxHealth);
-        EmitSignal(nameof(HealthChangedEventHandler));
+    int previousHealth = CurrentHealth; // Store the health before change
+    CurrentHealth = Mathf.Clamp(CurrentHealth + amount, 0, MaxHealth);
+    EmitSignal(nameof(HealthChangedEventHandler));
 
-        if (amount < 0)  // Only play TakeDamage animation if losing health
-        {
-            GD.Print("Enemy TakeDamage Animation");
-            Sprite.Play("TakeDamage");
-        }
+    if (amount < 0 && previousHealth > CurrentHealth)  // Only if health is lost
+    {
+        GD.Print("Enemy TakeDamage Animation");
+        Sprite.Play("TakeDamage");
 
-        if (CurrentHealth <= 0)
-        {
-            CurrentHealth = 0;
-            Sprite.Play("Death");
-            GD.Print("Enemy has died");
-
-            // Disable physics and processes
-            SetPhysicsProcess(false);
-            SetProcess(false);
-
-            // Directly call the Death handler after the death animation
-            GetTree().CreateTimer(2.0f).Connect("timeout", new Callable(this, "_on_death_animation_finished"));
-        }
+        // Ensure animation doesn't get stuck by forcing a return to "Move"
+        GetTree().CreateTimer(0.5f).Connect("timeout", new Callable(this, "_on_takedamage_animation_finished"));
     }
+
+    if (CurrentHealth <= 0)
+    {
+        CurrentHealth = 0;
+        GD.Print("Enemy has died");
+        Sprite.Play("Death");
+
+        SetPhysicsProcess(false);
+        SetProcess(false);
+
+        GetTree().CreateTimer(2.0f).Connect("timeout", new Callable(this, "_on_death_animation_finished"));
+    }
+    }
+
 
     // This method is called after the death animation has finished
     private void _on_death_animation_finished()
@@ -217,6 +222,16 @@ public partial class FareDodger_AS : CharacterBody2D
                 GD.Print("Player health changed by enemy attack");
                 pc.ChangeHealth(-25);
             }
+            if(Sprite.Animation == "TakeDamage")
+            {
+                SpriteFrames spriteFrames = Sprite.SpriteFrames;  // Correct property name in Godot 4.x
+                int frameCount = spriteFrames.GetFrameCount("TakeDamage");  // Get frame count for the Attack2 animation
+                float fps = (float)Sprite.SpriteFrames.GetAnimationSpeed("TakeDamage");  // Correct way to get the fps in Godot 4.x
+                float attackDuration = frameCount / fps;  // Calculate the duration of the attack animation
+
+                // Create a timer to wait for the animation to finish
+                GetTree().CreateTimer(attackDuration).Connect("timeout", new Callable(this, "_on_takedamage_animation_finished"));
+            }
 
             // Delay after the attack animation, then trigger death sequence
             if (Sprite.Animation == "Attack2")
@@ -230,6 +245,18 @@ public partial class FareDodger_AS : CharacterBody2D
                 GetTree().CreateTimer(attackDuration).Connect("timeout", new Callable(this, "_on_attack_animation_finished"));
             }
         }
+        else if (body.IsInGroup("bullets"))
+            {
+                 GD.Print("Enemy hit by bullet: " + body.Name);
+
+                if (!isTakingDamage) // Only process damage if not already taking damage
+                {
+                    isTakingDamage = true;  // Prevent repeated damage triggering
+                    ChangeHealth(-25);  // Reduce health
+                }
+
+                body.QueueFree(); 
+            }
         else
         {
             GD.Print("Not a PlayerController. Detected: " + body.GetType());
@@ -244,6 +271,17 @@ public partial class FareDodger_AS : CharacterBody2D
         GD.Print("Set the isAttacking back to false");
 
         isAttacking = false;
+    }
+
+
+    private void _on_takedamage_animation_finished()
+    {
+        if (CurrentHealth > 0) // Only transition if still alive
+        {
+            GD.Print("TakeDamage animation finished. Resuming movement.");
+            isTakingDamage = false;  // Allow movement again
+            Sprite.Play("Move");  
+        }
     }
 
     // public void RespawnEnemy()
