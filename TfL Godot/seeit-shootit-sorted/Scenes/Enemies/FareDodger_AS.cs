@@ -148,7 +148,7 @@ public partial class FareDodger_AS : CharacterBody2D
         {
             // Reverse the movement direction when colliding with a wall
             velocity.X = -velocity.X;
-            GD.Print("Wall detected! Reversing direction.");
+            //GD.Print("Wall detected! Reversing direction.");
         }
             // Implement basic oscillation-based movement
             float timeInSeconds = Time.GetTicksMsec() / 1000.0f;

@@ -22,11 +22,9 @@ public partial class PlayerController : CharacterBody2D
 
     public void Shoot()
     {
-        GD.Print("Shoot is being hit");
-       //added direction vector here and below
         Vector2 shootDirection = _sprite.FlipH ? Vector2.Left : Vector2.Right;
         EmitSignal(SignalName.GunShot, gunScene, ((Node2D)muzzle).GlobalPosition, shootDirection);
-        GD.Print("Bullet emitted from position: " + ((Node2D)muzzle).GlobalPosition);
+        //GD.Print("Bullet emitted from position: " + ((Node2D)muzzle).GlobalPosition);
     }
 
     public override void _Ready()
@@ -72,29 +70,58 @@ public partial class PlayerController : CharacterBody2D
         }
     }
 
-    private void _on_animated_sprite_2d_animation_finished()
+     private void _on_animated_sprite_2d_animation_finished()
     {
-        if (_sprite.Animation == "death") // Ensure we're checking the correct animation
+        if (_sprite.Animation == "shoot")
+        {
+            // If the current state matches a specific movement, replay that animation
+            if (!IsOnFloor())
+            {
+                _sprite.Play("jump");
+            }
+            else if (Velocity.X != 0)
+            {
+                _sprite.Play("run");
+            }
+            else
+            {
+                _sprite.Play("idle");
+            }
+        }
+
+        // Keep existing death animation check
+        if (_sprite.Animation == "death")
         {
             GD.Print("Respawning player after death animation");
             EmitSignal(nameof(Death));
         }
     }
 
+
+
     public const float AirControlFactor = 0.5f; // The factor to reduce horizontal speed while in the air
 
-    public override void _PhysicsProcess(double delta)
+ public override void _PhysicsProcess(double delta)
     {
-        if (_sprite.Animation == "TakeDamage" && _sprite.IsPlaying())
-        {
-            return; // Don't override TakeDamage animation
-        }
-
+        // Handle shooting without interrupting movement
         if (Input.IsActionJustPressed("shoot"))
         { 
             GD.Print("Gun is shooting");
-            Shoot();
             
+            Shoot();
+
+            // Play shoot animation without stopping other animations
+            if (_sprite.Animation != "shoot")
+            {
+                GD.Print("Playing shoot animation alongside current movement");
+                _sprite.Play("shoot");
+            }
+        }
+
+        // Check if currently in TakeDamage animation and prevent interruption
+        if (_sprite.Animation == "TakeDamage" && _sprite.IsPlaying())
+        {
+            return;
         }
 
         Vector2 velocity = Velocity;
@@ -123,12 +150,20 @@ public partial class PlayerController : CharacterBody2D
             if (IsOnFloor()) // On the ground, move at full speed
             {
                 velocity.X = direction.X * Speed;
-                _sprite.Play("run");
+                // Only change to run animation if not shooting
+                if (_sprite.Animation != "shoot")
+                {
+                    _sprite.Play("run");
+                }
             }
             else // In the air, reduce horizontal movement speed
             {
                 velocity.X = direction.X * Speed * AirControlFactor;
-                _sprite.Play("jump");
+                // Only change to jump animation if not shooting
+                if (_sprite.Animation != "shoot")
+                {
+                    _sprite.Play("jump");
+                }
             }
 
             // Flip the sprite depending on movement direction
@@ -137,12 +172,17 @@ public partial class PlayerController : CharacterBody2D
         else if (IsOnFloor()) // If standing still on the ground, play idle animation
         {
             velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-            _sprite.Play("idle");
+            // Only change to idle animation if not shooting
+            if (_sprite.Animation != "shoot")
+            {
+                _sprite.Play("idle");
+            }
         }
+
         // Assign and move
         Velocity = velocity;
         MoveAndSlide();
-    }
+        }
 
     public void TakeDamage(){
         GD.Print("Player has taken damage");
