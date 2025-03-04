@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://bq6u41dlj13qu"]
+[gd_scene load_steps=64 format=4 uid="uid://bq6u41dlj13qu"]
 
 [ext_resource type="Script" path="res://Scenes/Level1Scene/GameManagerController.cs" id="1_ay083"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_h4sir"]
@@ -601,6 +601,10 @@ region = Rect2(0, 64, 34, 32)
 atlas = ExtResource("3_u4fe8")
 region = Rect2(34, 64, 34, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlain"]
+atlas = ExtResource("3_u4fe8")
+region = Rect2(34, 64, 34, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dujqt"]
 animations = [{
 "frames": [{
@@ -685,10 +689,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6gaob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlain")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
-"speed": 10.0
+"speed": 21.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb2sn"]
@@ -940,8 +947,6 @@ position = Vector2(2, 17)
 sprite_frames = SubResource("SpriteFrames_dujqt")
 animation = &"shoot"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.025092
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(101, 17)

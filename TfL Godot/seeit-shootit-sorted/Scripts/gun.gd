@@ -26,7 +26,7 @@ func _on_area_entered(area: Area2D):
 	# Ensure the area belongs to an enemy
 	var enemy = area.get_parent()  # Get the parent (should be FareDodger_AS)
 	
-	if enemy and enemy.has_method("ChangeHealth"):  # Check if the enemy has a ChangeHealth method
+	if enemy and enemy.has_method("ChangeHealth") and enemy.CurrentHealth > 0:  # Check if the enemy has a ChangeHealth method
 		print("Bullet hit FareDodger_AS!")
 		enemy.ChangeHealth(-25)  # Reduce enemy health by 10
 		queue_free()  # Destroy the bullet after hitting the enemy
