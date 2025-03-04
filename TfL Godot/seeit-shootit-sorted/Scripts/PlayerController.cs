@@ -77,8 +77,6 @@ public partial class PlayerController : CharacterBody2D
         if (_sprite.Animation == "death") // Ensure we're checking the correct animation
         {
             GD.Print("Respawning player after death animation");
-
-
             EmitSignal(nameof(Death));
         }
     }
