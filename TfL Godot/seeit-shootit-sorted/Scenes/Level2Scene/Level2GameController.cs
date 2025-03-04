@@ -4,12 +4,11 @@ using System;
 public partial class Level2GameController : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
-	[Export]
-	private Node gunContainer;
+	[Export] private Node gunContainer;
 	private PlayerController player;
+    private FareDodger_AS enemy;
 
-	[Export]
-	public Marker2D RespawnPoint;
+	[Export] public Marker2D RespawnPoint;
 	public override void _Ready()
 	{
 		gunContainer = GetNode<Node>("GunContainer");
@@ -23,7 +22,27 @@ public partial class Level2GameController : Node2D
         {
             GD.PrintErr("Player not found in group.");
         }
+
+
+
+        enemy = GetNode<FareDodger_AS>("EnemyNode"); // Assuming enemy is a direct child of GameManager
+        if (enemy != null)
+        {
+            GD.Print("Connecting death signal from enemy");
+            enemy.Connect("Death", new Callable(this, "_on_enemy_death"));
+        }
+        else
+        {
+            GD.PrintErr("Enemy node not found!");
+        }
 	}
+
+    // Method triggered by the death signal from the enemy
+    private void _on_enemy_death()
+    {
+        GD.Print("Enemy has died! Triggering respawn logic or other actions.");
+        RespawnPlayer(); // Example: Respawn player or do something else
+    }
 
 
 	public void OnPlayerGunShot(PackedScene gunScene, Vector2 location, Vector2 direction)
@@ -56,6 +75,7 @@ public partial class Level2GameController : Node2D
 	}
 
 	public void RespawnPlayer(){
+        GD.Print("Level 2 Respawn Point:", RespawnPoint.GlobalPosition);
 		PlayerController pc = GetNode<PlayerController>("CharacterBody2D");
 		pc.GlobalPosition = RespawnPoint.GlobalPosition;
 		pc.RespawnPlayer();
@@ -65,3 +85,4 @@ public partial class Level2GameController : Node2D
 		RespawnPlayer();
 	}
 }
+

@@ -27,7 +27,7 @@ public partial class NextLevelController : Area2D
         // Check if the player entered
         if (body is PlayerController pc)
         {
-            GlobalState.Instance.PlayerHealth = pc.CurrentHealth;
+            GlobalState.Instance.PlayerHealth = pc.MaxHealth;
 
             GetTree().ChangeSceneToFile("Scenes/Level2Scene/level2Scene.tscn"); // Change to the correct scene path
         }
