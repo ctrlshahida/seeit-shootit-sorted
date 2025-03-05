@@ -1,4 +1,5 @@
 extends Area2D
+@onready var gun_shot_sound: AudioStreamPlayer2D = $GunShotSound
 
 @export var speed = 600
 var direction = Vector2.RIGHT  # Default direction is to the right
@@ -8,6 +9,7 @@ func _ready():
 	add_to_group("bullets")
 	set_direction(direction)
 	connect("area_entered", Callable(self, "_on_area_entered"))
+	gun_shot_sound.play()
 
 func set_direction(dir: Vector2):
 	# Set the direction of the bullet
