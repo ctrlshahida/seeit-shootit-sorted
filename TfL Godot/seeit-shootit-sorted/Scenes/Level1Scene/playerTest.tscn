@@ -906,6 +906,14 @@ shape = SubResource("RectangleShape2D_tq8jg")
 position = Vector2(115, 4)
 shape = SubResource("RectangleShape2D_tq8jg")
 
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="SpikeTrap/SpikeTrap"]
+stream = ExtResource("18_q1oq0")
+volume_db = -11.885
+
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="SpikeTrap"]
+stream = ExtResource("18_q1oq0")
+volume_db = -11.39
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(124, 91)
 script = ExtResource("2_xcyyp")
@@ -972,6 +980,7 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("16_kjr0p")
 
 [node name="PausePanel" type="Panel" parent="UI/PauseMenu"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1062,11 +1071,6 @@ position = Vector2(2016, 559)
 
 [node name="FareDodger_animated_sprite2" parent="." instance=ExtResource("17_qiqie")]
 position = Vector2(311, 344)
-
-[node name="SpikeSFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("18_q1oq0")
-volume_db = 9.905
-pitch_scale = 0.96
 
 [connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="SpikeTrap/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered_FD"]
