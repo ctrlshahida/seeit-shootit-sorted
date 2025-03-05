@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://nxqn864prslg"]
+[gd_scene load_steps=39 format=4 uid="uid://nxqn864prslg"]
 
 [ext_resource type="Script" path="res://Scenes/Level2Scene/Level2GameController.cs" id="1_2yy7e"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_ywufh"]
@@ -93,6 +93,10 @@ region = Rect2(0, 64, 34, 32)
 atlas = ExtResource("3_am0w4")
 region = Rect2(34, 64, 34, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y1sp"]
+atlas = ExtResource("3_am0w4")
+region = Rect2(34, 64, 34, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_bs83c"]
 animations = [{
 "frames": [{
@@ -177,10 +181,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6gaob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y1sp")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
-"speed": 10.0
+"speed": 21.0
 }]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a02tf"]
