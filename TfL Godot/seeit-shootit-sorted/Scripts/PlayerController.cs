@@ -8,6 +8,7 @@ public partial class PlayerController : CharacterBody2D
     private AnimatedSprite2D _sprite;
     public int CurrentHealth { get; set; }
     public int MaxHealth { get; set; }
+
     [Signal] public delegate void HealthChangedEventHandler();
     [Signal] public delegate void DeathEventHandler();
 
@@ -70,7 +71,7 @@ public partial class PlayerController : CharacterBody2D
         }
     }
 
-     private void _on_animated_sprite_2d_animation_finished()
+    private void _on_animated_sprite_2d_animation_finished()
     {
         if (_sprite.Animation == "shoot")
         {
