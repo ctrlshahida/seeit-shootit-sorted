@@ -1,0 +1,137 @@
+[gd_scene load_steps=16 format=3 uid="uid://ckqhgxegb24os"]
+
+[ext_resource type="Texture2D" uid="uid://birjr43wji1mf" path="res://Assets/Pixel Potion Pack - FINISHED/Bubbly Brew Bottle/RED/Bubbly Brew Bottle - RED - Spritesheet.png" id="1_ghu5f"]
+[ext_resource type="Script" path="res://HealthPotion.cs" id="1_qwgng"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8vl0a"]
+radius = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4chy"]
+atlas = ExtResource("1_ghu5f")
+region = Rect2(0, 0, 18, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjwr2"]
+atlas = ExtResource("1_ghu5f")
+region = Rect2(18, 0, 18, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah7gi"]
+atlas = ExtResource("1_ghu5f")
+region = Rect2(36, 0, 18, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76yhm"]
+atlas = ExtResource("1_ghu5f")
+region = Rect2(54, 0, 18, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpxlg"]
+atlas = ExtResource("1_ghu5f")
+region = Rect2(72, 0, 18, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fy51"]
+atlas = ExtResource("1_ghu5f")
+region = Rect2(90, 0, 18, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5pab"]
+atlas = ExtResource("1_ghu5f")
+region = Rect2(108, 0, 18, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2x8b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4chy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjwr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ah7gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76yhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpxlg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fy51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5pab")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxwio"]
+radius = 3.59808
+height = 12.0
+
+[sub_resource type="Animation" id="Animation_0xfj5"]
+resource_name = "default"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_payot"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ac4ud"]
+_data = {
+"RESET": SubResource("Animation_payot"),
+"default": SubResource("Animation_0xfj5")
+}
+
+[node name="HealthPotion" type="Node2D"]
+script = ExtResource("1_qwgng")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(-1, 26)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_8vl0a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
+rotation = 0.523599
+scale = Vector2(0.444444, 0.442857)
+sprite_frames = SubResource("SpriteFrames_k2x8b")
+autoplay = "default"
+frame_progress = 0.426201
+
+[node name="Area2D" type="Area2D" parent="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Area2D"]
+position = Vector2(-1, 1)
+rotation = 0.523599
+shape = SubResource("CapsuleShape2D_yxwio")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_ac4ud")
+}
+autoplay = "default"
+
+[connection signal="body_entered" from="AnimatableBody2D/Area2D" to="." method="_on_area_2d_body_entered"]

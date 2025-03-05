@@ -251,7 +251,7 @@ public partial class FareDodger_AS : CharacterBody2D
         }
         else if (body.IsInGroup("bullets"))
             {
-                 GD.Print("Enemy hit by bullet: " + body.Name);
+                GD.Print("Enemy hit by bullet: " + body.Name);
 
                 if (!isTakingDamage) // Only process damage if not already taking damage
                 {
