@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bcw1oq48xem6o" path="res://Scenes/Boss_Level/Stratford station taller2.png" id="2_vu8vf"]
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="2_yf6kf"]
 [ext_resource type="Texture2D" uid="uid://dn5wdtj3ln44v" path="res://Scenes/Enemies/TFL_Engineer_damage1 (1).png" id="3_33pcv"]
-[ext_resource type="PackedScene" path="res://health_potion.tscn" id="4_aygrl"]
+[ext_resource type="PackedScene" uid="uid://ckqhgxegb24os" path="res://health_potion.tscn" id="4_aygrl"]
 [ext_resource type="Texture2D" uid="uid://ub1p6omsmy4m" path="res://Scenes/Enemies/TFL_Engineer_damage2 (1).png" id="4_wxcro"]
 [ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://Scenes/Level1Scene/TFL_Engineer.png" id="5_ypcrp"]
 [ext_resource type="PackedScene" uid="uid://rmj3vjhkch6i" path="res://Scenes/gunAndShooting/gun.tscn" id="7_d24v5"]
