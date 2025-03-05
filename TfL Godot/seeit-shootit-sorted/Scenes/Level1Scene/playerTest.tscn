@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://bq6u41dlj13qu"]
+[gd_scene load_steps=65 format=4 uid="uid://bq6u41dlj13qu"]
 
 [ext_resource type="Script" path="res://Scenes/Level1Scene/GameManagerController.cs" id="1_ay083"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_h4sir"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ub1p6omsmy4m" path="res://Scenes/Enemies/TFL_Engineer_damage2 (1).png" id="9_f7jmp"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="16_kjr0p"]
 [ext_resource type="PackedScene" uid="uid://congvsaf5uqm7" path="res://Scenes/Enemies/fare_dodger_Animated_sprite.tscn" id="17_qiqie"]
-[ext_resource type="AudioStream" path="res://Assets/mind-the-gap-old-london-underground.mp3" id="18_q1oq0"]
+[ext_resource type="AudioStream" uid="uid://bqh02w1btvp7i" path="res://Assets/mind-the-gap-old-london-underground.mp3" id="18_q1oq0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3erx"]
 texture = ExtResource("1_h4sir")

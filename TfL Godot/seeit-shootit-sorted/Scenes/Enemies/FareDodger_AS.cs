@@ -24,6 +24,9 @@ public partial class FareDodger_AS : CharacterBody2D
     public int CurrentHealth { get; set; }
     public int MaxHealth { get; set; }
 
+    private AudioStreamPlayer2D zombieSfx;
+
+
     // Signal for death event
     [Signal] public delegate void DeathEventHandler();
     [Signal] public delegate void HealthChangedEventHandler();
@@ -34,6 +37,7 @@ public partial class FareDodger_AS : CharacterBody2D
         Sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         bottomLeft = GetNode<RayCast2D>("LeftRaycast");
         bottomRight = GetNode<RayCast2D>("RightRaycast");
+        zombieSfx = GetNode<AudioStreamPlayer2D>("ZombieSound");
 
         // Connect the "animation_finished" signal safely
         if (Sprite != null)
@@ -113,7 +117,7 @@ public partial class FareDodger_AS : CharacterBody2D
         SetPhysicsProcess(false);
         SetProcess(false);
 
-        GetTree().CreateTimer(2.0f).Connect("timeout", new Callable(this, "_on_death_animation_finished"));
+        GetTree().CreateTimer(1.0f).Connect("timeout", new Callable(this, "_on_death_animation_finished"));
     }
     }
 
@@ -205,7 +209,7 @@ public partial class FareDodger_AS : CharacterBody2D
             if (distance < 40)  // Adjust the distance as needed
             {
                 GD.Print("Player detected, triggering attack animation");
-
+                zombieSfx.Play();
                 // Stop any other animations and play the attack animation if not already playing
                 if (!isAttacking && Sprite.Animation != "Attack2")
                 {
