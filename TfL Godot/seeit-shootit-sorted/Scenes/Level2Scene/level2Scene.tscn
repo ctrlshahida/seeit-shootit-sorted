@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://nxqn864prslg"]
+[gd_scene load_steps=59 format=4 uid="uid://nxqn864prslg"]
 
 [ext_resource type="Script" path="res://Scenes/Level2Scene/Level2GameController.cs" id="1_2yy7e"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_ywufh"]
@@ -15,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://dbb7q7gw37r1h" path="res://moving_platform_vertical.tscn" id="12_c8eyh"]
 [ext_resource type="Script" path="res://Scenes/Level1Scene/SpikeTrapController.cs" id="13_exejd"]
 [ext_resource type="PackedScene" uid="uid://congvsaf5uqm7" path="res://Scenes/Enemies/fare_dodger_Animated_sprite.tscn" id="14_3oh54"]
-[ext_resource type="PackedScene" uid="uid://c0o5nveqam40w" path="res://moving_spike.tscn" id="15_d2rl4"]
+[ext_resource type="AudioStream" uid="uid://bqh02w1btvp7i" path="res://Assets/mind-the-gap-old-london-underground.mp3" id="14_mlkkx"]
+[ext_resource type="PackedScene" path="res://moving_spike.tscn" id="15_d2rl4"]
 [ext_resource type="Script" path="res://Scenes/Level2Scene/NextLevelBossController.cs" id="17_g7fyl"]
 [ext_resource type="Texture2D" uid="uid://drffmebnan33v" path="res://Scenes/Level1Scene/Pixel Art Animated Portal/sprite-sheet.png" id="17_obrne"]
 
@@ -764,6 +765,10 @@ position = Vector2(404, 635)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap/Area2D"]
 shape = SubResource("RectangleShape2D_inv41")
 
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
+
 [node name="SpikeTrap2" type="Node" parent="MyMap/spikes/SpikeTraps"]
 script = ExtResource("13_exejd")
 
@@ -779,6 +784,10 @@ position = Vector2(540, 636)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap2/Area2D"]
 shape = SubResource("RectangleShape2D_inv41")
+
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap2"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
 
 [node name="SpikeTrap3" type="Node" parent="MyMap/spikes/SpikeTraps"]
 script = ExtResource("13_exejd")
@@ -796,6 +805,10 @@ position = Vector2(675, 636)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap3/Area2D"]
 shape = SubResource("RectangleShape2D_inv41")
 
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap3"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
+
 [node name="SpikeTrap4" type="Node" parent="MyMap/spikes/SpikeTraps"]
 script = ExtResource("13_exejd")
 
@@ -812,6 +825,10 @@ position = Vector2(811, 635)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap4/Area2D"]
 shape = SubResource("RectangleShape2D_inv41")
 
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap4"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
+
 [node name="SpikeTrap5" type="Node" parent="MyMap/spikes/SpikeTraps"]
 script = ExtResource("13_exejd")
 
@@ -827,6 +844,10 @@ position = Vector2(941, 635)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap5/Area2D"]
 shape = SubResource("RectangleShape2D_inv41")
+
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap5"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
 
 [node name="SpikeTrap6" type="Node" parent="MyMap/spikes/SpikeTraps"]
 script = ExtResource("13_exejd")
@@ -845,6 +866,10 @@ position = Vector2(941, 635)
 position = Vector2(136, -1)
 shape = SubResource("RectangleShape2D_inv41")
 
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap6"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
+
 [node name="SpikeTrap7" type="Node" parent="MyMap/spikes/SpikeTraps"]
 script = ExtResource("13_exejd")
 
@@ -861,6 +886,10 @@ position = Vector2(1211, 635)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap7/Area2D"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_inv41")
+
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap7"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
 
 [node name="SpikeTrap8" type="Node" parent="MyMap/spikes/SpikeTraps"]
 script = ExtResource("13_exejd")
@@ -879,6 +908,10 @@ position = Vector2(1346, 635)
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_inv41")
 
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap8"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
+
 [node name="SpikeTrap9" type="Node" parent="MyMap/spikes/SpikeTraps"]
 script = ExtResource("13_exejd")
 
@@ -895,6 +928,10 @@ position = Vector2(1482, 635)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap9/Area2D"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_inv41")
+
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap9"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
 
 [node name="SpikeTrap10" type="Node" parent="MyMap/spikes/SpikeTraps"]
 script = ExtResource("13_exejd")
@@ -913,6 +950,10 @@ position = Vector2(1615, 635)
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_inv41")
 
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap10"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
+
 [node name="SpikeTrap11" type="Node" parent="MyMap/spikes/SpikeTraps"]
 script = ExtResource("13_exejd")
 
@@ -929,6 +970,10 @@ position = Vector2(1740, 636)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap11/Area2D"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_inv41")
+
+[node name="SpikeSound" type="AudioStreamPlayer2D" parent="MyMap/spikes/SpikeTraps/SpikeTrap11"]
+stream = ExtResource("14_mlkkx")
+volume_db = -11.885
 
 [node name="MovingSpike" parent="MyMap/spikes" instance=ExtResource("15_d2rl4")]
 position = Vector2(599, 67)
