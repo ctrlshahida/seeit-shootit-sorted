@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0o5nveqam40w"]
+
+[ext_resource type="Script" path="res://Scenes/Level1Scene/SpikeTrapController.cs" id="1_r8016"]
+[ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="2_ugvoj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_roj4j"]
+size = Vector2(135, 31.5312)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sin4"]
+size = Vector2(12, 91.2517)
+
+[sub_resource type="Animation" id="Animation_vng37"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_edaa2"]
+resource_name = "default"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f6kyg"]
+_data = {
+"RESET": SubResource("Animation_vng37"),
+"default": SubResource("Animation_edaa2")
+}
+
+[node name="MovingSpike" type="Node2D"]
+
+[node name="SpikeTrap" type="AnimatableBody2D" parent="."]
+script = ExtResource("1_r8016")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpikeTrap"]
+position = Vector2(5.9514e-14, 0)
+rotation = -1.5708
+scale = Vector2(2.12064, 2.09324)
+texture = ExtResource("2_ugvoj")
+region_enabled = true
+region_rect = Rect2(37.1293, 230.51, 44.2217, 9.79195)
+
+[node name="Area2D" type="Area2D" parent="SpikeTrap/Sprite2D"]
+position = Vector2(-0.471556, 2.38419e-07)
+scale = Vector2(0.324723, 0.223602)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeTrap/Sprite2D/Area2D"]
+position = Vector2(2.90436, 4.27302)
+shape = SubResource("RectangleShape2D_roj4j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeTrap"]
+position = Vector2(2, -1)
+shape = SubResource("RectangleShape2D_4sin4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpikeTrap"]
+libraries = {
+"": SubResource("AnimationLibrary_f6kyg")
+}
+autoplay = "default"
+
+[connection signal="body_entered" from="SpikeTrap/Sprite2D/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="SpikeTrap/Sprite2D/Area2D" to="SpikeTrap" method="_on_area_2d_body_entered_FD"]
