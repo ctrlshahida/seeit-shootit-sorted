@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://bq6u41dlj13qu"]
+[gd_scene load_steps=67 format=4 uid="uid://bq6u41dlj13qu"]
 
 [ext_resource type="Script" path="res://Scenes/Level1Scene/GameManagerController.cs" id="1_ay083"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_h4sir"]
@@ -1091,7 +1091,7 @@ position = Vector2(7, -1)
 position = Vector2(2016, 559)
 
 [node name="FareDodger_animated_sprite2" parent="." instance=ExtResource("17_qiqie")]
-position = Vector2(311, 344)
+position = Vector2(2056, 560)
 
 [node name="SpikeSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_q1oq0")
