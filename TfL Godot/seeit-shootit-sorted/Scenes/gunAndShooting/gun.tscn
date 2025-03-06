@@ -30,6 +30,6 @@ scale = Vector2(0.0625002, 0.075)
 
 [node name="GunShotSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_kmnkn")
-volume_db = -19.809
+volume_db = -14.857
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -7,12 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://dn5wdtj3ln44v" path="res://Scenes/Enemies/TFL_Engineer_damage1 (1).png" id="3_33pcv"]
 [ext_resource type="PackedScene" uid="uid://ckqhgxegb24os" path="res://health_potion.tscn" id="4_aygrl"]
 [ext_resource type="Texture2D" uid="uid://ub1p6omsmy4m" path="res://Scenes/Enemies/TFL_Engineer_damage2 (1).png" id="4_wxcro"]
+[ext_resource type="PackedScene" uid="uid://d1ycnpdbqhpfw" path="res://Scenes/Boss_Level/bossDodger.tscn" id="5_d4aiv"]
 [ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://Scenes/Level1Scene/TFL_Engineer.png" id="5_ypcrp"]
 [ext_resource type="PackedScene" uid="uid://rmj3vjhkch6i" path="res://Scenes/gunAndShooting/gun.tscn" id="7_d24v5"]
 [ext_resource type="Texture2D" uid="uid://bkv3pba0hsdpf" path="res://Scenes/Level1Scene/healthbarUnder-4.png" id="8_xxth0"]
 [ext_resource type="Texture2D" uid="uid://btm41081r1p3l" path="res://Scenes/Level1Scene/healthbarProgress-4.png" id="9_tpsfp"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.cs" id="10_wa44a"]
-[ext_resource type="PackedScene" uid="uid://congvsaf5uqm7" path="res://Scenes/Enemies/fare_dodger_Animated_sprite.tscn" id="11_ux6y7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76dwv"]
 size = Vector2(21.535, 1.4)
@@ -387,6 +387,10 @@ tile_set = SubResource("TileSet_jod4b")
 [node name="HealthPotion" parent="." instance=ExtResource("4_aygrl")]
 position = Vector2(0, 199)
 
+[node name="BossDodger" parent="." instance=ExtResource("5_d4aiv")]
+position = Vector2(244, 175)
+scale = Vector2(0.5, 0.5)
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(125, 91)
 script = ExtResource("2_yf6kf")
@@ -442,9 +446,6 @@ texture_under = ExtResource("8_xxth0")
 texture_progress = ExtResource("9_tpsfp")
 script = ExtResource("10_wa44a")
 metadata/_edit_use_anchors_ = true
-
-[node name="FareDodger_animated_sprite5" parent="." instance=ExtResource("11_ux6y7")]
-position = Vector2(302, 50)
 
 [connection signal="Death" from="CharacterBody2D" to="." method="_on_character_body_2d_death"]
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
