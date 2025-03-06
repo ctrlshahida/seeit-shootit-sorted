@@ -15,8 +15,6 @@ public partial class PlayerController : CharacterBody2D
     [Signal]
     public delegate void GunShotEventHandler(PackedScene gunScene, Vector2 location, Vector2 direction);
 
-
-
     private Node muzzle;
 
     PackedScene gunScene = (PackedScene)ResourceLoader.Load("res://Scenes/gunAndShooting/gun.tscn");
@@ -25,18 +23,17 @@ public partial class PlayerController : CharacterBody2D
     {
         Vector2 shootDirection = _sprite.FlipH ? Vector2.Left : Vector2.Right;
         EmitSignal(SignalName.GunShot, gunScene, ((Node2D)muzzle).GlobalPosition, shootDirection);
-        //GD.Print("Bullet emitted from position: " + ((Node2D)muzzle).GlobalPosition);
     }
 
     public override void _Ready()
     {
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D"); // Get the sprite node
         muzzle = GetNode("Muzzle");
-
         MaxHealth = 100;
 
         CurrentHealth = GlobalState.Instance.PlayerHealth;
         GlobalState.Instance.Player = this;
+        
     }
 
     public override void _Process(double delta)

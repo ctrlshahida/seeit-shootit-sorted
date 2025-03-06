@@ -22,11 +22,11 @@ public partial class SpikeTrapController : Node
 	private void _on_area_2d_body_entered(Node2D body){
 		mindTheGap = GetNode<AudioStreamPlayer2D>("SpikeSound");
 		GD.Print("Body: " + body + " has entered");
-		mindTheGap.Play();
+		
 		if (body is PlayerController){
 			PlayerController pc = body as PlayerController;
 			pc.ChangeHealth(-100);
-			
+			mindTheGap.Play();
 		}
 	}
 
