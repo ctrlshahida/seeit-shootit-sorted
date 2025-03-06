@@ -40,16 +40,16 @@ public partial class PlayerController : CharacterBody2D
         UpdateLivesDisplay();
     }
 
-        private void UpdateLivesDisplay()
-        {
-            if (livesLabel != null){
-                GD.Print("Updating lives display, Lives: " + lives);
-                livesLabel.Text = "LIVES LEFT: " + lives.ToString();
-            }
-            else{
-                GD.PrintErr("LivesLabel node is null!");
-            }
+    private void UpdateLivesDisplay()
+    {
+        if (livesLabel != null){
+            GD.Print("Updating lives display, Lives: " + lives);
+            livesLabel.Text = "LIVES LEFT: " + lives.ToString();
         }
+        else{
+            GD.PrintErr("LivesLabel node is null!");
+        }
+    }
 
     public override void _Process(double delta)
     {
