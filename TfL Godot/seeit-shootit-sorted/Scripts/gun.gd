@@ -27,12 +27,14 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _on_area_entered(area: Area2D):
 	print("Bullet hit:", area.name)
 	
-	# Ensure the area belongs to an enemy
-	var enemy = area.get_parent()  # Get the parent (should be FareDodger_AS)
+	var enemy = area.get_parent()  
 	
 	if enemy and enemy.has_method("ChangeHealth") and enemy.CurrentHealth > 0:  # Check if the enemy has a ChangeHealth method
 		print("Bullet hit FareDodger_AS!")
-		enemy.ChangeHealth(-25)  # Reduce enemy health by 10
-		queue_free()  # Destroy the bullet after hitting the enemy
+		enemy.ChangeHealth(-25)  
+		queue_free()  
+	elif enemy and enemy.has_method("ChangeHealthBoss"):
+		enemy.ChangeHealthBoss(-10)
+		queue_free()
 	else:
 		print("Hit something else:", area.name)
