@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="16_kjr0p"]
 [ext_resource type="PackedScene" uid="uid://congvsaf5uqm7" path="res://Scenes/Enemies/fare_dodger_Animated_sprite.tscn" id="17_qiqie"]
 [ext_resource type="AudioStream" uid="uid://bqh02w1btvp7i" path="res://Assets/mind-the-gap-old-london-underground.mp3" id="18_q1oq0"]
-[ext_resource type="PackedScene" uid="uid://ckqhgxegb24os" path="res://health_potion.tscn" id="19_pg1nh"]
+[ext_resource type="PackedScene" path="res://health_potion.tscn" id="19_pg1nh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3erx"]
 texture = ExtResource("1_h4sir")

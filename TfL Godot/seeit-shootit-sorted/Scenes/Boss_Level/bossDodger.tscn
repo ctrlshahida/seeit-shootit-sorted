@@ -1,7 +1,8 @@
-[gd_scene load_steps=66 format=3 uid="uid://d1ycnpdbqhpfw"]
+[gd_scene load_steps=67 format=3 uid="uid://dsfyjsfjb6p0k"]
 
 [ext_resource type="Script" path="res://Scripts/BossDodger.cs" id="1_vep2s"]
 [ext_resource type="Texture2D" uid="uid://ceaiud1jhey4d" path="res://Scenes/Boss_Level/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="2_bo4nt"]
+[ext_resource type="AudioStream" uid="uid://faubgtciuts4" path="res://Scenes/Enemies/monster-warrior-roar-195877.mp3" id="3_4clwj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ufjm"]
 atlas = ExtResource("2_bo4nt")
@@ -466,10 +467,8 @@ script = ExtResource("1_vep2s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_uwjdl")
-animation = &"Cleave"
+animation = &"Death"
 autoplay = "Cleave"
-frame = 1
-frame_progress = 0.956242
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-5, 34)
@@ -481,5 +480,9 @@ shape = SubResource("CapsuleShape2D_pt0gr")
 position = Vector2(-6, 29)
 shape = SubResource("CapsuleShape2D_xi6c4")
 debug_color = Color(0.875274, 0.000426246, 0.836033, 0.42)
+
+[node name="BossRoar" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("3_4clwj")
+volume_db = 4.952
 
 [connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_BossAttackArea_body_entered"]

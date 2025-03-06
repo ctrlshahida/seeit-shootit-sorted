@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://d0qgd3yo6iyrm"]
+[gd_scene load_steps=36 format=4 uid="uid://dd5cm3bfk8ea2"]
 
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_icjp8"]
 [ext_resource type="Script" path="res://Scenes/Level3Scene/Level3GameController.cs" id="1_xcm7j"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://btm41081r1p3l" path="res://Scenes/Level1Scene/healthbarProgress-4.png" id="9_tpsfp"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.cs" id="10_wa44a"]
 [ext_resource type="PackedScene" uid="uid://congvsaf5uqm7" path="res://Scenes/Enemies/fare_dodger_Animated_sprite.tscn" id="11_ux6y7"]
-[ext_resource type="PackedScene" uid="uid://ckqhgxegb24os" path="res://health_potion.tscn" id="12_oqotv"]
+[ext_resource type="PackedScene" path="res://health_potion.tscn" id="12_oqotv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_egy5a"]
 texture = ExtResource("1_icjp8")
