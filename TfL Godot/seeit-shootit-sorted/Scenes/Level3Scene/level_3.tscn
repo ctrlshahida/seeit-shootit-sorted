@@ -1,18 +1,19 @@
-[gd_scene load_steps=39 format=4 uid="uid://bstvu4aylimow"]
+[gd_scene load_steps=41 format=4 uid="uid://bstvu4aylimow"]
 
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_icjp8"]
 [ext_resource type="Script" path="res://Scenes/Level3Scene/Level3GameController.cs" id="1_xcm7j"]
 [ext_resource type="Texture2D" uid="uid://bcw1oq48xem6o" path="res://Scenes/Boss_Level/Stratford station taller2.png" id="2_vu8vf"]
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="2_yf6kf"]
 [ext_resource type="Texture2D" uid="uid://dn5wdtj3ln44v" path="res://Scenes/Enemies/TFL_Engineer_damage1 (1).png" id="3_33pcv"]
-[ext_resource type="PackedScene" path="res://health_potion.tscn" id="4_aygrl"]
+[ext_resource type="PackedScene" uid="uid://ckqhgxegb24os" path="res://health_potion.tscn" id="4_aygrl"]
 [ext_resource type="Texture2D" uid="uid://ub1p6omsmy4m" path="res://Scenes/Enemies/TFL_Engineer_damage2 (1).png" id="4_wxcro"]
-[ext_resource type="PackedScene" uid="uid://d1ycnpdbqhpfw" path="res://Scenes/Boss_Level/bossDodger.tscn" id="5_d4aiv"]
+[ext_resource type="PackedScene" path="res://Scenes/Boss_Level/bossDodger.tscn" id="5_d4aiv"]
 [ext_resource type="Texture2D" uid="uid://bdx6xet3l8iyg" path="res://Scenes/Level1Scene/TFL_Engineer.png" id="5_ypcrp"]
 [ext_resource type="PackedScene" uid="uid://rmj3vjhkch6i" path="res://Scenes/gunAndShooting/gun.tscn" id="7_d24v5"]
 [ext_resource type="Texture2D" uid="uid://bkv3pba0hsdpf" path="res://Scenes/Level1Scene/healthbarUnder-4.png" id="8_xxth0"]
 [ext_resource type="Texture2D" uid="uid://btm41081r1p3l" path="res://Scenes/Level1Scene/healthbarProgress-4.png" id="9_tpsfp"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.cs" id="10_wa44a"]
+[ext_resource type="FontFile" uid="uid://b3lnyk8e2oy2p" path="res://Assets/Fonts/I-pixel-u.ttf" id="11_bonxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76dwv"]
 size = Vector2(21.535, 1.4)
@@ -344,6 +345,10 @@ animations = [{
 "speed": 21.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_f4rod"]
+font = ExtResource("11_bonxr")
+font_size = 32
+
 [node name="Level3" type="Node2D" node_paths=PackedStringArray("RespawnPoint")]
 script = ExtResource("1_xcm7j")
 RespawnPoint = NodePath("RespawnPoint")
@@ -376,7 +381,7 @@ position = Vector2(409, 67)
 shape = SubResource("RectangleShape2D_fijtj")
 
 [node name="RespawnPoint" type="Marker2D" parent="."]
-position = Vector2(-15, 143)
+position = Vector2(-40, 191)
 
 [node name="Level3Map" type="Node2D" parent="."]
 
@@ -388,11 +393,11 @@ tile_set = SubResource("TileSet_jod4b")
 position = Vector2(0, 199)
 
 [node name="BossDodger" parent="." instance=ExtResource("5_d4aiv")]
-position = Vector2(244, 175)
+position = Vector2(275, 173)
 scale = Vector2(0.5, 0.5)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(125, 91)
+position = Vector2(-39, 147)
 script = ExtResource("2_yf6kf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -415,12 +420,20 @@ limit_right = 432
 position = Vector2(-20, -56)
 
 [node name="GunContainer" type="Node2D" parent="."]
-position = Vector2(7, -1)
+position = Vector2(-59, 91)
 
 [node name="Gun" parent="." instance=ExtResource("7_d24v5")]
-position = Vector2(107, 35)
+position = Vector2(-59, 91)
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="LivesLabel" type="Label" parent="UI"]
+offset_left = 1591.0
+offset_top = 78.0
+offset_right = 1831.0
+offset_bottom = 118.0
+text = "LIVES LEFT:"
+label_settings = SubResource("LabelSettings_f4rod")
 
 [node name="Health Bar" type="Panel" parent="UI"]
 anchors_preset = 1
