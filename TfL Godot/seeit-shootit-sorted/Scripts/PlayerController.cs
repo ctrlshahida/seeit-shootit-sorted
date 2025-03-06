@@ -32,11 +32,15 @@ public partial class PlayerController : CharacterBody2D
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D"); // Get the sprite node
         muzzle = GetNode("Muzzle");
         MaxHealth = 100;
+        CurrentHealth = MaxHealth;
 
         CurrentHealth = GlobalState.Instance.PlayerHealth;
         GlobalState.Instance.Player = this;
 
-        livesLabel = GetNode<Label>("/root/Level1/UI/LivesLabel");
+        Node currentLevel = GetTree().CurrentScene;
+
+    // Find LivesLabel inside the UI node (assuming UI is a child of the level)
+        livesLabel = currentLevel.GetNodeOrNull<Label>("UI/LivesLabel");
         UpdateLivesDisplay();
     }
 
@@ -206,9 +210,9 @@ public override void _PhysicsProcess(double delta)
     public void RespawnPlayer(){
         if(lives > 1){
             lives = lives-0.5;
-            //GD.Print("Player respawned");
+            GD.Print("Player respawned");
             CurrentHealth = MaxHealth;
-            //EmitSignal("HealthChanged");
+            EmitSignal("HealthChanged");
             UpdateLivesDisplay();
 
             SetPhysicsProcess(true);

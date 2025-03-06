@@ -15,9 +15,27 @@ public partial class GameOverMenu : Control
 
 	private void _on_continue_pressed()
     {
-        var targetScene = "res://Scenes/Level1Scene/playerTest.tscn";
-        GetTree().ChangeSceneToFile(targetScene);
+		var targetScene = "res://Scenes/Level1Scene/playerTest.tscn";
+
+		// Get the player before changing the scene and reset health
+		var player = GetTree().GetFirstNodeInGroup("player") as PlayerController;
+		if (player != null)
+		{
+			player.CurrentHealth = player.MaxHealth;
+		}
+
+		GetTree().ChangeSceneToFile(targetScene);
     }
+
+	// private void ResetPlayerHealth()
+	// {
+	// 	var player = GetTree().GetFirstNodeInGroup("player") as PlayerController;
+	// 	if (player != null)
+	// 	{
+	// 		player.CurrentHealth = player.MaxHealth;
+	// 	}
+	// }
+
 
 	private void _on_exit_pressed()
     {

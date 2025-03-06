@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://nxqn864prslg"]
+[gd_scene load_steps=62 format=4 uid="uid://nxqn864prslg"]
 
 [ext_resource type="Script" path="res://Scenes/Level2Scene/Level2GameController.cs" id="1_2yy7e"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_ywufh"]
@@ -11,14 +11,16 @@
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.cs" id="6_dqnqr"]
 [ext_resource type="AudioStream" uid="uid://bqh02w1btvp7i" path="res://Assets/mind-the-gap-old-london-underground.mp3" id="8_ndarr"]
 [ext_resource type="PackedScene" uid="uid://rmj3vjhkch6i" path="res://Scenes/gunAndShooting/gun.tscn" id="10_upt50"]
-[ext_resource type="PackedScene" path="res://moving_platform.tscn" id="11_bgsu6"]
+[ext_resource type="PackedScene" uid="uid://bodb35ec0npgb" path="res://moving_platform.tscn" id="11_bgsu6"]
 [ext_resource type="Texture2D" uid="uid://bfib3wx1vlpcw" path="res://Scenes/Level1Scene/Underground Roundel 2.png" id="11_uudkv"]
-[ext_resource type="PackedScene" path="res://moving_platform_vertical.tscn" id="12_c8eyh"]
+[ext_resource type="PackedScene" uid="uid://dbb7q7gw37r1h" path="res://moving_platform_vertical.tscn" id="12_c8eyh"]
 [ext_resource type="Script" path="res://Scenes/Level1Scene/SpikeTrapController.cs" id="13_exejd"]
 [ext_resource type="PackedScene" uid="uid://congvsaf5uqm7" path="res://Scenes/Enemies/fare_dodger_Animated_sprite.tscn" id="14_3oh54"]
-[ext_resource type="PackedScene" uid="uid://c0o5nveqam40w" path="res://moving_spike.tscn" id="15_d2rl4"]
+[ext_resource type="PackedScene" uid="uid://cyts5m1w3lfgg" path="res://moving_spike.tscn" id="15_d2rl4"]
+[ext_resource type="FontFile" uid="uid://b3lnyk8e2oy2p" path="res://Assets/Fonts/I-pixel-u.ttf" id="16_pvrck"]
 [ext_resource type="Script" path="res://Scenes/Level2Scene/NextLevelBossController.cs" id="17_g7fyl"]
 [ext_resource type="Texture2D" uid="uid://drffmebnan33v" path="res://Scenes/Level1Scene/Pixel Art Animated Portal/sprite-sheet.png" id="17_obrne"]
+[ext_resource type="PackedScene" uid="uid://ckqhgxegb24os" path="res://health_potion.tscn" id="21_6khhk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8oip"]
 size = Vector2(24, 26)
@@ -638,6 +640,10 @@ texture_region_size = Vector2i(19, 23)
 [sub_resource type="TileSet" id="TileSet_rdrqo"]
 sources/0 = SubResource("TileSetAtlasSource_r4v26")
 
+[sub_resource type="LabelSettings" id="LabelSettings_r8gf3"]
+font = ExtResource("16_pvrck")
+font_size = 32
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tytbr"]
 radius = 34.0
 height = 80.0
@@ -1004,6 +1010,14 @@ tile_set = SubResource("TileSet_rdrqo")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="LivesLabel" type="Label" parent="UI"]
+offset_left = 1592.0
+offset_top = 78.0
+offset_right = 1832.0
+offset_bottom = 118.0
+text = "LIVES LEFT:"
+label_settings = SubResource("LabelSettings_r8gf3")
+
 [node name="Health Bar" type="Panel" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -1135,28 +1149,31 @@ sprite_frames = SubResource("SpriteFrames_wasq5")
 autoplay = "default"
 frame_progress = 0.9621
 
+[node name="HealthPotion" parent="." instance=ExtResource("21_6khhk")]
+position = Vector2(2001, 629)
+
 [connection signal="Death" from="CharacterBody2D" to="." method="_on_character_body_2d_death"]
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap" method="_on_area_2d_body_entered_FD"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap2/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap2" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap2/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap2" method="_on_area_2d_body_entered_FD"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap3/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap3" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap2/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap3/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap3" method="_on_area_2d_body_entered_FD"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap4/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap4" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap3/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap3" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap4/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap4" method="_on_area_2d_body_entered_FD"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap5/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap5" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap4/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap4" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap5/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap5" method="_on_area_2d_body_entered_FD"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap6/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap6" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap5/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap5" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap6/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap6" method="_on_area_2d_body_entered_FD"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap7/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap7" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap6/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap6" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap7/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap7" method="_on_area_2d_body_entered_FD"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap8/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap8" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap7/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap7" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap8/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap8" method="_on_area_2d_body_entered_FD"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap9/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap9" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap8/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap8" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap9/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap9" method="_on_area_2d_body_entered_FD"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap10/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap10" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap9/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap9" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap10/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap10" method="_on_area_2d_body_entered_FD"]
-[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap11/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap11" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap10/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap10" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap11/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap11" method="_on_area_2d_body_entered_FD"]
+[connection signal="body_entered" from="MyMap/spikes/SpikeTraps/SpikeTrap11/Area2D" to="MyMap/spikes/SpikeTraps/SpikeTrap11" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="NextLevel" to="NextLevel" method="_on_body_entered"]
