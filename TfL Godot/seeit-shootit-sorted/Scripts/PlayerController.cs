@@ -8,6 +8,8 @@ public partial class PlayerController : CharacterBody2D
     private AnimatedSprite2D _sprite;
     public int CurrentHealth { get; set; }
     public int MaxHealth { get; set; }
+    public double lives {get; set;} = 3;
+    public Label livesLabel;
 
     [Signal] public delegate void HealthChangedEventHandler();
     [Signal] public delegate void DeathEventHandler();
@@ -37,7 +39,21 @@ public partial class PlayerController : CharacterBody2D
 
         CurrentHealth = GlobalState.Instance.PlayerHealth;
         GlobalState.Instance.Player = this;
+
+        livesLabel = GetNode<Label>("/root/Level1/UI/LivesLabel");
+        UpdateLivesDisplay();
     }
+
+        private void UpdateLivesDisplay()
+        {
+            if (livesLabel != null){
+                GD.Print("Updating lives display, Lives: " + lives);
+                livesLabel.Text = "LIVES LEFT: " + lives.ToString();
+            }
+            else{
+                GD.PrintErr("LivesLabel node is null!");
+            }
+        }
 
     public override void _Process(double delta)
     {
@@ -68,6 +84,8 @@ public partial class PlayerController : CharacterBody2D
             GD.Print("Player has died");
             SetPhysicsProcess(false); // Stop player movement
             SetProcess(false);
+
+            GetTree().CreateTimer(1.5f).Timeout += RespawnPlayer;
         }
     }
 
@@ -102,7 +120,7 @@ public partial class PlayerController : CharacterBody2D
 
     public const float AirControlFactor = 0.5f; // The factor to reduce horizontal speed while in the air
 
- public override void _PhysicsProcess(double delta)
+public override void _PhysicsProcess(double delta)
     {
         // Handle shooting without interrupting movement
         if (Input.IsActionJustPressed("shoot"))
@@ -190,12 +208,24 @@ public partial class PlayerController : CharacterBody2D
     }
 
     public void RespawnPlayer(){
-        GD.Print("Player respawned");
-        CurrentHealth = MaxHealth;
-        EmitSignal("HealthChanged");
+        if(lives > 1){
+            lives = lives-0.5;
+            //GD.Print("Player respawned");
+            CurrentHealth = MaxHealth;
+            //EmitSignal("HealthChanged");
+            UpdateLivesDisplay();
 
-        //_sprite.Play("idle");
-        SetPhysicsProcess(true);
-        SetProcess(true);
+            SetPhysicsProcess(true);
+            SetProcess(true);
+        }
+        else // No lives left -> Game Over
+        {
+            GD.Print("Game Over");
+            GetTree().CreateTimer(0f).Timeout += () => 
+            {
+                GetTree().ChangeSceneToFile("res://Scenes/GameOverMenu/Game_Over_menu.tscn");
+            };
+        }
+
     }
 }

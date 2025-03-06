@@ -376,7 +376,7 @@ position = Vector2(409, 67)
 shape = SubResource("RectangleShape2D_fijtj")
 
 [node name="RespawnPoint" type="Marker2D" parent="."]
-position = Vector2(-15, 143)
+position = Vector2(34, 190)
 
 [node name="Level3Map" type="Node2D" parent="."]
 

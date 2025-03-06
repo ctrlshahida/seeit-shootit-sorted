@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://bq6u41dlj13qu"]
+[gd_scene load_steps=68 format=4 uid="uid://bq6u41dlj13qu"]
 
 [ext_resource type="Script" path="res://Scenes/Level1Scene/GameManagerController.cs" id="1_ay083"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="1_h4sir"]
@@ -760,6 +760,10 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_ov0jx"]
+font = ExtResource("3_b3x07")
+font_size = 32
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdbyp"]
 bg_color = Color(0.767685, 0.790104, 0.923885, 1)
 corner_radius_top_left = 15
@@ -793,7 +797,7 @@ script = ExtResource("1_ay083")
 RespawnPoint = NodePath("RespawnPoint")
 
 [node name="RespawnPoint" type="Marker2D" parent="."]
-position = Vector2(133, 390)
+position = Vector2(134, 424)
 
 [node name="MyMap" type="Node" parent="."]
 
@@ -978,6 +982,14 @@ autoplay = "default"
 frame_progress = 0.302107
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="LivesLabel" type="Label" parent="UI"]
+offset_left = 1596.0
+offset_top = 84.0
+offset_right = 1868.0
+offset_bottom = 124.0
+text = "LIVES LEFT:  "
+label_settings = SubResource("LabelSettings_ov0jx")
 
 [node name="Health Bar" type="Panel" parent="UI"]
 anchors_preset = 1
