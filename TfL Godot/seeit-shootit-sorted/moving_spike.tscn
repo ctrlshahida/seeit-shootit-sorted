@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0o5nveqam40w"]
+[gd_scene load_steps=8 format=3 uid="uid://cyts5m1w3lfgg"]
 
 [ext_resource type="Script" path="res://Scenes/Level1Scene/SpikeTrapController.cs" id="1_r8016"]
 [ext_resource type="Texture2D" uid="uid://d0pjwm1i02kfw" path="res://Scenes/Level1Scene/Dungeon Tile Set.png" id="2_ugvoj"]
