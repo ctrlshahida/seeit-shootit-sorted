@@ -3,20 +3,22 @@ extends Area2D
 
 @export var speed = 600
 var direction = Vector2.RIGHT  # Default direction is to the right
+static var gun_shot_counter = 0
 
 func _ready():
-	# Make sure the bullet direction is set when the gun is instantiated
 	add_to_group("bullets")
 	set_direction(direction)
 	connect("area_entered", Callable(self, "_on_area_entered"))
-	gun_shot_sound.play()
-
+	gun_shot_counter += 1
+	
+	# Only play sound if counter is greater than 1
+	if gun_shot_sound and gun_shot_counter > 1:
+		gun_shot_sound.play()
+		
 func set_direction(dir: Vector2):
-	# Set the direction of the bullet
 	direction = dir
 
 func _physics_process(delta):
-	# Move the bullet in the direction it's facing
 	global_position.x += direction.x * speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
