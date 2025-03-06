@@ -151,7 +151,7 @@ public partial class BossDodger : CharacterBody2D
     if (body is PlayerController player)
     {
         GD.Print("Player entered attack area, dealing damage!");
-        player.ChangeHealth(-10);  // Deal damage
+        player.ChangeHealth(-100);  // Deal damage
     }
 }
 
