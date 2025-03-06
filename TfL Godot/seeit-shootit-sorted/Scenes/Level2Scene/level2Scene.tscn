@@ -20,7 +20,7 @@
 [ext_resource type="FontFile" uid="uid://b3lnyk8e2oy2p" path="res://Assets/Fonts/I-pixel-u.ttf" id="16_pvrck"]
 [ext_resource type="Script" path="res://Scenes/Level2Scene/NextLevelBossController.cs" id="17_g7fyl"]
 [ext_resource type="Texture2D" uid="uid://drffmebnan33v" path="res://Scenes/Level1Scene/Pixel Art Animated Portal/sprite-sheet.png" id="17_obrne"]
-[ext_resource type="PackedScene" uid="uid://ckqhgxegb24os" path="res://health_potion.tscn" id="21_6khhk"]
+[ext_resource type="PackedScene" path="res://health_potion.tscn" id="21_6khhk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8oip"]
 size = Vector2(24, 26)
